@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M.Fahri Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #080808;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    /* Noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes borderGlow {
+      0%, 100% { box-shadow: 0 0 0px rgba(255,255,255,0.1); }
+      50%       { box-shadow: 0 0 30px rgba(255,255,255,0.15); }
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-fade-in-up   { animation: fadeInUp 0.9s ease forwards; }
+    .animate-fade-in      { animation: fadeIn 1.2s ease forwards; }
+    .animate-slide-left   { animation: slideInLeft 0.8s ease forwards; }
+    .animate-slide-right  { animation: slideInRight 0.8s ease forwards; }
+    .animate-pulse-slow   { animation: pulse-slow 3s ease-in-out infinite; }
+    .animate-marquee      { animation: marquee 20s linear infinite; }
+    .animate-count-up     { animation: countUp 0.8s ease forwards; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+
+    /* Scroll-triggered visibility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hover underline effect */
+    .hover-underline {
+      position: relative;
+    }
+    .hover-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: #f5f5f5;
+      transition: width 0.3s ease;
+    }
+    .hover-underline:hover::after { width: 100%; }
+
+    /* Card border animation */
+    .card-hover {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .card-hover:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-4px);
+    }
+
+    /* Gradient text */
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Blinking cursor */
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+    .cursor-blink { animation: blink 1s step-end infinite; }
+
+    /* Line decoration */
+    .line-deco {
+      width: 40px;
+      height: 1px;
+      background: #ffffff;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- ─────────────────── NAVBAR ─────────────────── -->
+  <nav class="fixed top-0 left-0 w-full z-50 px-6 md:px-16 py-5 flex justify-between items-center backdrop-blur-sm bg-black/40 border-b border-white/5">
+    <span class="text-sm font-bold tracking-[0.2em] uppercase text-white animate-fade-in">M.Fahri Studio</span>
+    <a
+      href="https://play.google.com/store/apps/dev?id=8175171606667151694"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-xs tracking-widest uppercase font-semibold border border-white/30 px-4 py-2 hover:bg-white hover:text-black transition-all duration-300 animate-fade-in delay-200"
+    >
+      Play Store
+    </a>
+  </nav>
+
+  <!-- ─────────────────── HERO ─────────────────── -->
+  <section class="relative min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24">
+
+    <!-- Background large text -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+      <span class="text-[18vw] font-black tracking-tighter text-white/[0.025] uppercase leading-none">STUDIO</span>
+    </div>
+
+    <div class="relative z-10 max-w-5xl">
+      <p class="text-xs tracking-[0.35em] uppercase text-white/40 mb-6 animate-fade-in-up">
+        <span class="line-deco"></span>Mobile App Developer
+      </p>
+
+      <h1 class="text-[clamp(3rem,10vw,9rem)] font-black leading-[0.9] tracking-tighter uppercase animate-fade-in-up delay-100">
+        M.Fahri<br />
+        <span class="text-gradient">Studio<span class="cursor-blink">_</span></span>
+      </h1>
+
+      <p class="mt-8 text-base md:text-lg text-white/50 max-w-xl leading-relaxed animate-fade-in-up delay-300">
+        Building high-quality mobile applications — purposeful, performant, and crafted with intention.
+      </p>
+
+      <div class="mt-12 flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-400">
+        <a
+          href="https://play.google.com/store/apps/dev?id=8175171606667151694"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-black text-sm font-bold tracking-widest uppercase px-8 py-4 hover:bg-white/80 transition-all duration-300"
+        >
+          View My Apps
+        </a>
+        <a
+          href="#about"
+          class="inline-block border border-white/20 text-white text-sm font-bold tracking-widest uppercase px-8 py-4 hover:border-white/60 transition-all duration-300"
+        >
+          About Me
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-pulse-slow">
+      <span class="text-[10px] tracking-[0.3em] uppercase text-white/30">Scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-white/30 to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- ─────────────────── MARQUEE ─────────────────── -->
+  <div class="py-6 border-y border-white/10 overflow-hidden bg-white/[0.02]">
+    <div class="flex whitespace-nowrap animate-marquee">
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Mobile Development</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Android Apps</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Google Play Store</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">UI/UX Design</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Clean Code</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Mobile Development</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Android Apps</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Google Play Store</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">UI/UX Design</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">Clean Code</span>
+      <span class="text-xs tracking-[0.4em] uppercase text-white/20 px-12">·</span>
+    </div>
+  </div>
+
+  <!-- ─────────────────── ABOUT ─────────────────── -->
+  <section id="about" class="px-6 md:px-16 py-32 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <div class="reveal">
+        <p class="text-xs tracking-[0.35em] uppercase text-white/40 mb-4">
+          <span class="line-deco"></span>About
+        </p>
+        <h2 class="text-4xl md:text-6xl font-black uppercase leading-[0.95] tracking-tight">
+          Crafting<br />Apps That<br /><span class="text-gradient">Matter.</span>
+        </h2>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.2s;">
+        <p class="text-white/50 text-base leading-relaxed mb-6">
+          M.Fahri Studio is an independent mobile development studio focused on creating clean, fast, and user-centered Android applications. Every product is built with a sharp eye for detail and a commitment to quality.
+        </p>
+        <p class="text-white/50 text-base leading-relaxed mb-10">
+          From concept to launch — the work speaks for itself. Explore the full portfolio directly on Google Play Store.
+        </p>
+        <a
+          href="https://play.google.com/store/apps/dev?id=8175171606667151694"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-bold tracking-widest uppercase hover-underline text-white/80 hover:text-white transition-colors duration-300"
+        >
+          Browse All Apps →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────── STATS ─────────────────── -->
+  <section class="px-6 md:px-16 py-20 border-y border-white/10 bg-white/[0.015]">
+    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+
+      <div class="reveal">
+        <p class="text-5xl md:text-6xl font-black tracking-tight text-white">10<span class="text-white/30">+</span></p>
+        <p class="text-xs tracking-[0.3em] uppercase text-white/40 mt-2">Apps Published</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.1s">
+        <p class="text-5xl md:text-6xl font-black tracking-tight text-white">1K<span class="text-white/30">+</span></p>
+        <p class="text-xs tracking-[0.3em] uppercase text-white/40 mt-2">Downloads</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s">
+        <p class="text-5xl md:text-6xl font-black tracking-tight text-white">100<span class="text-white/30">%</span></p>
+        <p class="text-xs tracking-[0.3em] uppercase text-white/40 mt-2">Independent</p>
+      </div>
+      <div class="reveal" style="transition-delay:0.3s">
+        <p class="text-5xl md:text-6xl font-black tracking-tight text-white">01<span class="text-white/30">×</span></p>
+        <p class="text-xs tracking-[0.3em] uppercase text-white/40 mt-2">Studio</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────── SERVICES ─────────────────── -->
+  <section class="px-6 md:px-16 py-32 max-w-6xl mx-auto">
+    <p class="text-xs tracking-[0.35em] uppercase text-white/40 mb-4 reveal">
+      <span class="line-deco"></span>What I Do
+    </p>
+    <h2 class="text-4xl md:text-6xl font-black uppercase leading-tight tracking-tight mb-16 reveal">
+      Core<br /><span class="text-gradient">Expertise</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-px bg-white/10">
+
+      <div class="card-hover p-8 bg-[#080808] reveal">
+        <span class="text-4xl font-black text-white/10 block mb-6">01</span>
+        <h3 class="text-xl font-bold uppercase tracking-wide mb-3">Android Development</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Native and cross-platform Android apps built for performance, reliability, and smooth user experience.</p>
+      </div>
+
+      <div class="card-hover p-8 bg-[#080808] reveal" style="transition-delay:0.15s">
+        <span class="text-4xl font-black text-white/10 block mb-6">02</span>
+        <h3 class="text-xl font-bold uppercase tracking-wide mb-3">UI/UX Design</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Clean, minimal interface design focused on clarity, usability, and visual hierarchy that guides users naturally.</p>
+      </div>
+
+      <div class="card-hover p-8 bg-[#080808] reveal" style="transition-delay:0.3s">
+        <span class="text-4xl font-black text-white/10 block mb-6">03</span>
+        <h3 class="text-xl font-bold uppercase tracking-wide mb-3">App Publishing</h3>
+        <p class="text-white/40 text-sm leading-relaxed">End-to-end handling of Google Play deployment, store listing optimization, and release management.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────── PHILOSOPHY ─────────────────── -->
+  <section class="px-6 md:px-16 py-28 border-t border-white/10">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs tracking-[0.35em] uppercase text-white/30 mb-8 reveal">Philosophy</p>
+      <blockquote class="text-3xl md:text-5xl font-black leading-tight tracking-tight uppercase reveal">
+        "Less features.<br />
+        <span class="text-gradient">More purpose.</span><br />
+        Better apps."
+      </blockquote>
+      <p class="mt-8 text-white/30 text-sm tracking-widest uppercase reveal">— M.Fahri Studio</p>
+    </div>
+  </section>
+
+  <!-- ─────────────────── CTA ─────────────────── -->
+  <section class="px-6 md:px-16 py-32 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+
+      <div class="reveal">
+        <p class="text-xs tracking-[0.35em] uppercase text-white/40 mb-4">
+          <span class="line-deco"></span>Get Started
+        </p>
+        <h2 class="text-4xl md:text-7xl font-black uppercase         leading-[0.9] tracking-tighter">
+          Explore<br />My Apps<br /><span class="text-gradient">on Play.</span>
+        </h2>
+      </div>
+
+      <div class="reveal" style="transition-delay:0.2s">
+        <p class="text-white/40 text-sm leading-relaxed max-w-sm mb-8">
+          All published applications are available on Google Play Store. Download, try, and leave a review — your feedback shapes the next build.
+        </p>
+        <a
+          href="https://play.google.com/store/apps/dev?id=8175171606667151694"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-white text-black text-sm font-bold tracking-widest uppercase px-10 py-5 hover:bg-white/80 transition-all duration-300 animate-borderGlow"
+          style="animation: borderGlow 3s ease-in-out infinite;"
+        >
+          Open Google Play →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────── CONTACT / SOCIAL ─────────────────── -->
+  <section class="px-6 md:px-16 py-20 border-t border-white/10 bg-white/[0.015]">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+
+      <p class="text-xs tracking-[0.35em] uppercase text-white/30 reveal">
+        Available on Google Play Store
+      </p>
+
+      <div class="flex items-center gap-8 reveal" style="transition-delay:0.2s">
+        <a
+          href="https://play.google.com/store/apps/dev?id=8175171606667151694"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-xs tracking-widest uppercase text-white/40 hover:text-white transition-colors duration-300 hover-underline"
+        >
+          Google Play
+        </a>
+        <span class="text-white/10">|</span>
+        <span class="text-xs tracking-widest uppercase text-white/40">M.Fahri Studio</span>
+        <span class="text-white/10">|</span>
+        <span class="text-xs tracking-widest uppercase text-white/40">Android Dev</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─────────────────── FOOTER ─────────────────── -->
+  <footer class="px-6 md:px-16 py-10 border-t border-white/5">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+      <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+        <span class="text-sm font-black tracking-[0.2em] uppercase text-white">M.Fahri Studio</span>
+        <span class="hidden md:block text-white/10">·</span>
+        <span class="text-xs text-white/25 tracking-widest uppercase">Mobile App Developer</span>
+      </div>
+
+      <p class="text-xs text-white/20 tracking-widest">
+        © <span id="year"></span> M.Fahri Studio. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ─────────────────── SCRIPTS ─────────────────── -->
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll reveal observer
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    reveals.forEach(el => observer.observe(el));
+
+    // Navbar background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('bg-black/80');
+        nav.classList.remove('bg-black/40');
+      } else {
+        nav.classList.add('bg-black/40');
+        nav.classList.remove('bg-black/80');
+      }
+    });
+
+    // Subtle cursor glow effect
+    const cursor = document.createElement('div');
+    cursor.style.cssText = `
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: left 0.4s ease, top 0.4s ease;
+    `;
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top  = e.clientY + 'px';
+    });
+  </script>
+
+</body>
+</html>
