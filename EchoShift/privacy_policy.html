@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Shift - Terms of Service & Privacy Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #1a1a2e;
+            --text-main: #ffffff;
+            --text-muted: #c5c6c7;
+            --accent-pink: #ffb3ba;
+            --accent-blue: #bae1ff;
+            --accent-yellow: #ffe082;
+            --border-color: #2a2a4a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue), var(--accent-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Tabs Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-blue);
+            color: #0b0c10;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(186, 225, 255, 0.4);
+        }
+
+        .tab-btn:hover:not(.active) {
+            border-color: var(--accent-pink);
+            color: var(--text-main);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            color: var(--accent-pink);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent-yellow);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-pink);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .content-section {
+                padding: 1.5rem;
+            }
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .tab-btn {
+                width: 100%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">Echo Shift</div>
+        <div class="subtitle">Official Legal Documentation by M.Fahri Studio</div>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('privacy')">Privacy Policy</button>
+        <button class="tab-btn" onclick="switchTab('terms')">Terms of Service</button>
+    </div>
+
+    <!-- PRIVACY POLICY SECTION -->
+    <div id="privacy-section" class="content-section active">
+        <h2>Privacy Policy</h2>
+        <p><strong>Last Updated: July 8, 2026</strong></p>
+        <p>M.Fahri Studio ("we", "us", or "our") operates the mobile game <strong>Echo Shift</strong>. We are committed to protecting the privacy of our players, including children. This document outlines how data is handled in Echo Shift.</p>
+
+        <h3>1. Children's Privacy (Families Policy & COPPA)</h3>
+        <p>Echo Shift is designed for players of all ages, including children under the age of 13. We take children's privacy extremely seriously. In compliance with the Child Online Privacy Protection Act (COPPA) and Google Play Families Policies:</p>
+        <ul>
+            <li>We do NOT collect, store, or share any personally identifiable information (PII) from children.</li>
+            <li>No registration or accounts are required to play the game.</li>
+            <li>All third-party advertising requests are strictly flagged as child-directed.</li>
+        </ul>
+
+        <h3>2. Third-Party Advertising (Google AdMob)</h3>
+        <p>To keep the game free to play, we serve ads using the Google Mobile Ads SDK (AdMob). AdMob may collect and share certain device identifiers (such as Android Advertising ID, IP addresses, or device specifications) to deliver advertising, prevent fraud, and analyze ad performance.</p>
+        <p>Because our game is targeted towards families, we configure AdMob to:</p>
+        <ul>
+            <li>Disable personalized/interest-based tracking for all ad requests.</li>
+            <li>Enforce a Maximum Ad Content Rating of <strong>G (General)</strong>, ensuring only child-safe ads are displayed.</li>
+        </ul>
+        <p>You can learn more about how Google handles ad data in their privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy & Terms</a>.</p>
+
+        <h3>3. European Area Users (GDPR Compliance)</h3>
+        <p>For players located in the European Economic Area (EEA) and the United Kingdom, we integrate the Google User Messaging Platform (UMP) SDK. This consent management system allows users to explicitly review and choose their consent parameters for ad delivery before any ads are initialized. If consent is declined, no personalized tracking data will be shared.</p>
+
+        <h3>4. Data Security</h3>
+        <p>Since the game operates local offline gameplay loops and high scores are saved locally on your device storage, we do not transmit any personal game stats to external servers.</p>
+
+        <h3>5. Contact Us</h3>
+        <p>If you have any questions or concerns regarding this Privacy Policy, please contact us at:</p>
+        <p>Email: <a href="mailto:fahri.mohammad@gmail.com">fahri.mohammad@gmail.com</a></p>
+    </div>
+
+    <!-- TERMS OF SERVICE SECTION -->
+    <div id="terms-section" class="content-section">
+        <h2>Terms of Service</h2>
+        <p><strong>Last Updated: July 8, 2026</strong></p>
+        <p>By downloading, installing, or playing the mobile game <strong>Echo Shift</strong>, you agree to comply with and be bound by the following Terms of Service. If you do not agree, please do not use the application.</p>
+
+        <h3>1. License & Usage</h3>
+        <p>M.Fahri Studio grants you a personal, non-exclusive, non-transferable, revocable license to use Echo Shift for personal, non-commercial entertainment purposes on supported Android devices.</p>
+
+        <h3>2. Intellectual Property</h3>
+        <p>All game graphics, code, music, sound effects, layout, trademarks, and branding (including the name "Echo Shift" and associated spaceship/meteorite vector art designs) are the intellectual property of M.Fahri Studio. You may not copy, reverse-engineer, modify, or distribute any part of the application without our express written permission.</p>
+
+        <h3>3. Advertisements</h3>
+        <p>Echo Shift is supported by banner, interstitial, and rewarded advertisements provided by Google AdMob. These ads are served in compliance with Google Play Families Policies. Any interaction with ads is subject to the terms of the respective ad provider.</p>
+
+        <h3>4. Disclaimer & Limitation of Liability</h3>
+        <p>Echo Shift is provided on an "AS IS" and "AS AVAILABLE" basis. M.Fahri Studio makes no warranties of any kind regarding game uptime, absence of bugs, or continuous compatibility with all Android OS updates. In no event shall M.Fahri Studio be liable for any direct, indirect, incidental, or consequential damages arising out of the use or inability to play the game.</p>
+
+        <h3>5. Governing Law</h3>
+        <p>These terms shall be governed by and construed in accordance with the laws of Indonesia, without regard to its conflict of law provisions.</p>
+
+        <h3>6. Contact Us</h3>
+        <p>For any legal inquiries, support requests, or bug reports, please reach out to us at:</p>
+        <p>Email: <a href="mailto:fahri.mohammad@gmail.com">fahri.mohammad@gmail.com</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 M.Fahri Studio. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+    function switchTab(tab) {
+        // Remove active class from all buttons and sections
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+
+        // Add active class to selected button and section
+        if (tab === 'privacy') {
+            document.querySelector('button[onclick="switchTab(\'privacy\')"]').classList.add('active');
+            document.getElementById('privacy-section').classList.add('active');
+        } else {
+            document.querySelector('button[onclick="switchTab(\'terms\')"]').classList.add('active');
+            document.getElementById('terms-section').classList.add('active');
+        }
+    }
+</script>
+</body>
+</html>
