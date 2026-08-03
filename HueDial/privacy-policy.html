@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - HueDial</title>
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #09090A;
+            --card-bg: #141417;
+            --text-main: #FFFFFF;
+            --text-muted: #8E8E93;
+            --accent: #CCFF00; /* Neon Yellow/Green from HueDial */
+            --accent-glow: rgba(204, 255, 0, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --max-width: 800px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+
+        /* Subtle animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(204, 255, 0, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 229, 255, 0.02) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo-wrap {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .logo-hue {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent-glow);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .logo-dial {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 300;
+            font-size: 2.2rem;
+            color: var(--text-main);
+            opacity: 0.9;
+        }
+
+        header h1 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background-color: var(--accent);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--accent);
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 20px;
+            padding-left: 5px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s ease, text-decoration 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+
+        .highlight-box {
+            background-color: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 4px 8px 8px 4px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: underline;
+        }
+
+        /* Responsive Design tweaks */
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 15px;
+            }
+
+            .card {
+                padding: 24px;
+                border-radius: 12px;
+            }
+
+            .logo-hue {
+                font-size: 2.2rem;
+            }
+
+            .logo-dial {
+                font-size: 1.7rem;
+            }
+
+            header h1 {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-wrap">
+                <span class="logo-hue">Hue</span><span class="logo-dial">dial</span>
+            </div>
+            <h1>Privacy Policy</h1>
+            <p>Effective Date: August 3, 2026</p>
+        </header>
+
+        <div class="card">
+            <section>
+                <h2>Introduction</h2>
+                <p>Welcome to <strong>HueDial</strong> ("the App"), a color matching memory game built and published by <strong>M.Fahri Studio</strong> ("we", "us", or "our"). We are committed to protecting your privacy. This Privacy Policy governs your use of the App and explains how we handle and protect your information when you interact with our game.</p>
+                <p>By downloading, installing, or using HueDial, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+            </section>
+
+            <section>
+                <h2>Information Collection and Use</h2>
+                <p>HueDial is designed as a localized offline gameplay experience. We do not set up accounts, log in credentials, or directly collect or store personal identifying information (PII) such as names, addresses, phone numbers, or emails on our servers.</p>
+                <p>However, to provide advertisements, in-app reviews, and gameplay analysis, the App utilizes trusted third-party SDKs that may collect device-level identifiers automatically. The service providers we use and their policies include:</p>
+                
+                <div class="highlight-box">
+                    <p>Links to the privacy policies of the third-party service providers used by the App:</p>
+                    <ul style="margin-top: 10px; margin-bottom: 0;">
+                        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Play Services</a></li>
+                        <li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener noreferrer">Google AdMob</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>AdMob Integration & Advertising Identifiers</h2>
+                <p>We integrate Google AdMob to serve App Open, Interstitial, and Rewarded advertisements. AdMob uses advertising identifiers (such as the Android Advertising ID or Google Advertising ID) and device metadata to display relevant, non-intrusive ads, prevent ad fraud, and track impressions.</p>
+                <p>These advertising identifiers are unique, resettable IDs provided by your device's operating system. You can reset these identifiers or opt out of personalized tracking at any time through your device's settings menu:</p>
+                <ul>
+                    <li>Open <strong>Settings</strong> > <strong>Google</strong> > <strong>Ads</strong> > <strong>Opt out of Ads Personalization</strong> or <strong>Reset advertising ID</strong>.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Local Playtime and Score Storage</h2>
+                <p>The App saves your gameplay data, including difficulty selections, average scores, and cumulative playtime, locally on your device via <code>SharedPreferences</code>. This data remains on your physical device, is not transmitted to us, and is only used to run the game, track round progress, and trigger the native 10-minute In-App Review prompt.</p>
+            </section>
+
+            <section>
+                <h2>Security of Data</h2>
+                <p>The security of your data is important to us. Since the game stores your gameplay history locally on your device, the protection of this data relies heavily on your device's built-in operating system security. We use secure Android API methods to write and read these local preferences.</p>
+            </section>
+
+            <section>
+                <h2>Children's Privacy</h2>
+                <p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our records. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to perform the necessary actions.</p>
+            </section>
+
+            <section>
+                <h2>Changes to This Privacy Policy</h2>
+                <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted.</p>
+            </section>
+
+            <section>
+                <h2>Contact Us</h2>
+                <p>If you have any questions, suggestions, or concerns regarding this Privacy Policy, please feel free to reach out to us:</p>
+                <ul>
+                    <li><strong>Developer Name:</strong> M.Fahri Studio</li>
+                    <li><strong>Developer Email:</strong> <a href="mailto:fahri.mohammad@gmail.com">fahri.mohammad@gmail.com</a></li>
+                    <li><strong>Official Website:</strong> <a href="https://mfahristudio.rf.gd/" target="_blank" rel="noopener noreferrer">https://mfahristudio.rf.gd/</a></li>
+                </ul>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 M.Fahri Studio. All Rights Reserved. Created for <a href="https://play.google.com/store/apps/details?id=com.huedial.colormatchgame" target="_blank" rel="noopener noreferrer">HueDial</a>.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
