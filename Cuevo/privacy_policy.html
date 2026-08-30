@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Cuevo - Speak. Record. Create.</title>
+    <style>
+        :root {
+            --primary: #FF5A5F;
+            --text-main: #1F2937;
+            --text-muted: #4B5563;
+            --bg-page: #F9FAFB;
+            --bg-card: #FFFFFF;
+            --border-color: #E5E7EB;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        .header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+        h1 {
+            color: var(--primary);
+            margin: 0 0 8px 0;
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .app-badge {
+            display: inline-block;
+            background: rgba(255, 90, 95, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .meta-info {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        h2 {
+            color: var(--text-main);
+            font-size: 20px;
+            margin-top: 36px;
+            margin-bottom: 16px;
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
+        }
+        p, li {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+        ul {
+            padding-left: 24px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .highlight-box {
+            background-color: #FFF5F5;
+            border: 1px solid #FFE3E3;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        .highlight-box strong {
+            color: #C53030;
+        }
+        .contact-card {
+            background: #F3F4F6;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .contact-card p {
+            margin: 4px 0;
+            color: var(--text-main);
+            font-size: 14px;
+        }
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="app-badge">Official Legal Document</div>
+        <h1>Privacy Policy</h1>
+        <div class="meta-info">
+            <strong>Application:</strong> Cuevo - Speak. Record. Create.<br>
+            <strong>Developer:</strong> M.Fahri Studio<br>
+            <strong>Effective Date:</strong> August 31, 2026
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <strong>Privacy-First Commitment:</strong> Cuevo is designed as an offline-first video recording and teleprompter application. We do not store, view, or transmit your video recordings or teleprompter scripts to external servers. All personal media remains 100% on your local device.
+    </div>
+
+    <h2>1. Introduction</h2>
+    <p>
+        This Privacy Policy explains how <strong>M.Fahri Studio</strong> ("we", "our", or "developer") handles information when you use our mobile application <strong>Cuevo - Speak. Record. Create.</strong> ("the App"). We are firmly committed to protecting your privacy and ensuring you have complete control over your creative content.
+    </p>
+
+    <h2>2. Information Collection and Storage</h2>
+    <p>
+        Cuevo is built from the ground up to respect your privacy:
+    </p>
+    <ul>
+        <li><strong>No Account Required:</strong> You do not need to create an account, log in, or provide any personally identifiable information (such as name, phone number, or home address) to use the App.</li>
+        <li><strong>Local Script Storage:</strong> All scripts you write or import are stored exclusively in your device's secure local SQLite database (Room).</li>
+        <li><strong>Local Media Storage:</strong> All recorded videos are saved directly to your device's local storage (under the standard public directory <code>Movies/Cuevo</code>) via the Android MediaStore API. We have no access to your recorded videos.</li>
+    </ul>
+
+    <h2>3. Device Permissions &amp; How They Are Used</h2>
+    <p>
+        To deliver core teleprompter and camera functionality, Cuevo requests the following runtime permissions:
+    </p>
+    <ul>
+        <li>
+            <strong>Camera (<code>android.permission.CAMERA</code>):</strong>
+            Required to display the camera viewfinder on your screen, provide live teleprompter overlay positioning, and capture video frames. The camera feed is processed entirely in real-time on your device and is never broadcast or streamed.
+        </li>
+        <li>
+            <strong>Microphone (<code>android.permission.RECORD_AUDIO</code>):</strong>
+            Required to record audio alongside your video and power the live real-time audio volume level meter. Audio data is recorded directly into your local video file and is never uploaded.
+        </li>
+        <li>
+            <strong>Storage Access:</strong>
+            Used exclusively when you choose to import external text scripts (<code>.txt</code> files) or save/delete recorded video files through the App.
+        </li>
+        <li>
+            <strong>Network Access (<code>android.permission.INTERNET</code>):</strong>
+            Required exclusively for serving advertisements through Google AdMob, handling privacy consent through the Google User Messaging Platform (UMP), and checking for app updates or reviews via Google Play Services.
+        </li>
+    </ul>
+
+    <h2>4. Third-Party Services &amp; Advertising</h2>
+    <p>
+        The App integrates trusted third-party SDKs provided by Google. These services may collect technical identifiers (such as Android Advertising ID, IP address, and device type) strictly for service operation, fraud prevention, and ad delivery:
+    </p>
+    <ul>
+        <li>
+            <strong>Google AdMob (Google Mobile Ads SDK):</strong>
+            Used to display non-intrusive advertisements with an enforced cooldown period. You can learn more about how Google handles ad data by reading the
+            <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Advertising Privacy Policy</a>.
+        </li>
+        <li>
+            <strong>Google User Messaging Platform (UMP):</strong>
+            Used to collect and manage your privacy choices and consent in compliance with global regulations (including GDPR in Europe and state privacy laws). You can update your consent preferences at any time.
+        </li>
+        <li>
+            <strong>Google Play In-App Review:</strong>
+            Allows users to conveniently leave ratings and reviews on the Google Play Store without collecting personal data.
+        </li>
+    </ul>
+
+    <h2>5. Data Retention &amp; User Control</h2>
+    <p>
+        Because all your content is stored locally on your device:
+    </p>
+    <ul>
+        <li>You can delete any script or video recording inside the App at any time.</li>
+        <li>When you delete a recording in Cuevo, the corresponding video file is permanently removed from your device storage.</li>
+        <li>Uninstalling the App will remove all locally cached application database records. Your saved videos in <code>Movies/Cuevo</code> will remain accessible in your device file manager unless manually deleted.</li>
+    </ul>
+
+    <h2>6. Children's Privacy</h2>
+    <p>
+        Cuevo does not knowingly collect any personally identifiable information from children under the age of 13. The App is a general-audience productivity and video creation utility. If you are a parent or guardian and believe your child has provided personal information to a third-party service through the App, please contact us so we can take appropriate measures.
+    </p>
+
+    <h2>7. Security</h2>
+    <p>
+        We value your trust in using Cuevo. Because no personal data is transmitted to external servers maintained by M.Fahri Studio, your content is safeguarded by your device's built-in hardware security and operating system sandboxing.
+    </p>
+
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>
+        We may update our Privacy Policy periodically to reflect app updates or regulatory changes. Any updates will be posted on this page with a revised "Effective Date". We encourage you to review this page periodically.
+    </p>
+
+    <h2>9. Contact Us</h2>
+    <p>
+        If you have any questions, suggestions, or concerns regarding this Privacy Policy or the privacy practices of Cuevo, please contact us directly:
+    </p>
+    <div class="contact-card">
+        <p><strong>Developer:</strong> M.Fahri Studio</p>
+        <p><strong>Contact Person:</strong> Mohammad Fahri</p>
+        <p><strong>Email:</strong> <a href="mailto:fahri.mohammad@gmail.com">fahri.mohammad@gmail.com</a></p>
+        <p><strong>Application:</strong> Cuevo - Speak. Record. Create.</p>
+    </div>
+
+    <footer>
+        &copy; 2026 M.Fahri Studio. All rights reserved.
+    </footer>
+</div>
+
+</body>
+</html>
