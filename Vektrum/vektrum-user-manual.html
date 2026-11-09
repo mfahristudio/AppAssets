@@ -1,1 +1,1477 @@
-COMING SOON
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vektrum Pro &mdash; Official User Manual & Technical Reference</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --vk-primary: #00f2fe;
+      --vk-secondary: #4facfe;
+      --vk-accent: #00e5ff;
+      --vk-bg-sidebar-dark: #0f172a;
+      --vk-bg-content-dark: #0b1120;
+      --vk-border-dark: #1e293b;
+      --vk-bg-sidebar-light: #f8fafc;
+      --vk-bg-content-light: #ffffff;
+      --vk-border-light: #e2e8f0;
+      --sidebar-width: 320px;
+    }
+
+    [data-bs-theme="dark"] {
+      --bs-body-bg: var(--vk-bg-content-dark);
+      --bs-body-color: #cbd5e1;
+    }
+
+    [data-bs-theme="light"] {
+      --bs-body-bg: var(--vk-bg-content-light);
+      --bs-body-color: #334155;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      scroll-behavior: smooth;
+    }
+
+    /* Top Navbar */
+    .manual-navbar {
+      height: 68px;
+      z-index: 1040;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    [data-bs-theme="light"] .manual-navbar {
+      border-bottom: 1px solid var(--vk-border-light);
+      background-color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    /* Layout Wrapper */
+    .manual-wrapper {
+      display: flex;
+      min-height: calc(100vh - 68px);
+    }
+
+    /* Left Sidebar */
+    .manual-sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      height: calc(100vh - 68px);
+      position: sticky;
+      top: 68px;
+      overflow-y: auto;
+      border-right: 1px solid var(--vk-border-dark);
+      background-color: var(--vk-bg-sidebar-dark);
+      padding: 1.5rem 1rem;
+      scrollbar-width: thin;
+    }
+    [data-bs-theme="light"] .manual-sidebar {
+      background-color: var(--vk-bg-sidebar-light);
+      border-right: 1px solid var(--vk-border-light);
+    }
+
+    /* Sidebar Links */
+    .nav-chapter-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    [data-bs-theme="light"] .nav-chapter-title {
+      color: #64748b;
+    }
+
+    .manual-sidebar .nav-link {
+      font-size: 0.88rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      transition: all 0.15s ease-in-out;
+      margin-bottom: 2px;
+      text-decoration: none;
+    }
+    .manual-sidebar .nav-link:hover {
+      color: var(--vk-primary);
+      background: rgba(0, 242, 254, 0.08);
+    }
+    .manual-sidebar .nav-link.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(79, 172, 254, 0.15));
+      border-left: 3px solid var(--vk-primary);
+      font-weight: 600;
+    }
+    [data-bs-theme="light"] .manual-sidebar .nav-link {
+      color: #475569;
+    }
+    [data-bs-theme="light"] .manual-sidebar .nav-link:hover {
+      color: #0284c7;
+      background: rgba(2, 132, 199, 0.08);
+    }
+    [data-bs-theme="light"] .manual-sidebar .nav-link.active {
+      color: #0f172a;
+      background: #e0f2fe;
+      border-left: 3px solid #0284c7;
+    }
+
+    /* Main Content Area */
+    .manual-content {
+      flex-grow: 1;
+      max-width: 1040px;
+      padding: 2.5rem 3.5rem;
+      margin: 0 auto;
+    }
+
+    /* Image Placeholder Callout Box */
+    .image-placeholder-box {
+      border: 2px dashed rgba(0, 242, 254, 0.45);
+      background-color: rgba(0, 242, 254, 0.03);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+    }
+    .image-placeholder-box:hover {
+      border-color: var(--vk-primary);
+      background-color: rgba(0, 242, 254, 0.06);
+    }
+    .image-placeholder-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--vk-primary);
+      background: rgba(0, 242, 254, 0.12);
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    [data-bs-theme="light"] .image-placeholder-box {
+      border-color: rgba(2, 132, 199, 0.45);
+      background-color: #f0f9ff;
+    }
+    [data-bs-theme="light"] .image-placeholder-tag {
+      color: #0369a1;
+      background: #e0f2fe;
+    }
+
+    /* Typography & Hierarchy */
+    h1.doc-main-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2.doc-chapter-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.5rem;
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    [data-bs-theme="light"] h2.doc-chapter-heading {
+      border-bottom-color: var(--vk-border-light);
+    }
+    h3.doc-section-heading {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 0.85rem;
+      color: #e2e8f0;
+    }
+    [data-bs-theme="light"] h3.doc-section-heading {
+      color: #1e293b;
+    }
+
+    /* Parameter Table */
+    .param-table {
+      font-size: 0.9rem;
+    }
+    .param-table th {
+      background-color: rgba(255, 255, 255, 0.04);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Custom Callouts */
+    .doc-callout {
+      border-left: 4px solid var(--vk-primary);
+      background-color: rgba(0, 242, 254, 0.05);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .doc-callout-warning {
+      border-left-color: #f59e0b;
+      background-color: rgba(245, 158, 11, 0.06);
+    }
+    .doc-callout-tip {
+      border-left-color: #10b981;
+      background-color: rgba(16, 185, 129, 0.06);
+    }
+
+    /* Search input */
+    .sidebar-search-box {
+      margin-bottom: 1.25rem;
+      position: sticky;
+      top: 0;
+      background-color: var(--vk-bg-sidebar-dark);
+      padding-bottom: 0.5rem;
+      z-index: 5;
+    }
+    [data-bs-theme="light"] .sidebar-search-box {
+      background-color: var(--vk-bg-sidebar-light);
+    }
+
+    /* Badges */
+    .badge-pro {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.35em 0.65em;
+      border-radius: 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 991.98px) {
+      .manual-sidebar {
+        display: none;
+      }
+      .manual-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================= -->
+  <!-- TOP APPLICATION NAVBAR -->
+  <!-- ========================================================================= -->
+  <nav class="navbar navbar-expand-lg manual-navbar sticky-top bg-dark bg-opacity-75">
+    <div class="container-fluid px-3 px-md-4">
+      <button class="btn btn-outline-secondary d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#cover">
+        <span class="fs-4 fw-bold text-info"><i class="bi bi-soundwave me-1"></i>VEKTRUM</span>
+        <span class="badge-pro">PRO EDITION</span>
+      </a>
+
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <span class="d-none d-md-inline-block text-muted small">User Manual & Technical Reference &bull; v1.5.5</span>
+        
+        <!-- Light / Dark Mode Toggle Button -->
+        <button class="btn btn-sm btn-outline-info rounded-pill px-3 d-flex align-items-center gap-2" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+          <i class="bi bi-sun-fill" id="themeIcon"></i>
+          <span class="d-none d-sm-inline" id="themeLabel">Light Mode</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN LAYOUT WRAPPER (SIDEBAR + MAIN CONTENT) -->
+  <!-- ========================================================================= -->
+  <div class="manual-wrapper">
+
+    <!-- DESKTOP LEFT SIDEBAR -->
+    <aside class="manual-sidebar d-none d-lg-block">
+      <div class="sidebar-search-box">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text bg-transparent border-secondary border-opacity-25"><i class="bi bi-search text-muted"></i></span>
+          <input type="text" class="form-control bg-transparent border-secondary border-opacity-25" id="manualSearchInput" placeholder="Filter manual topics...">
+        </div>
+      </div>
+
+      <nav class="nav flex-column" id="sidebarNavList">
+        <a class="nav-link" href="#cover"><i class="bi bi-book me-2"></i>Welcome & Cover</a>
+
+        <div class="nav-chapter-title">1. Getting Started</div>
+        <a class="nav-link" href="#sec-intro"><i class="bi bi-stars me-2"></i>Product Overview</a>
+        <a class="nav-link" href="#sec-quickstart"><i class="bi bi-play-circle me-2"></i>Quick Start Guide</a>
+        <a class="nav-link" href="#sec-layout"><i class="bi bi-aspect-ratio me-2"></i>Interface Layout</a>
+
+        <div class="nav-chapter-title">2. Ribbon & Multi-Touch</div>
+        <a class="nav-link" href="#sec-ribbon-grid"><i class="bi bi-grid-3x3 me-2"></i>Touch Grid & Note Columns</a>
+        <a class="nav-link" href="#sec-expressive-touch"><i class="bi bi-fingerprint me-2"></i>Multi-Dimensional Expression</a>
+        <a class="nav-link" href="#sec-split-mode"><i class="bi bi-layout-split me-2"></i>Split Keyboard Mode</a>
+
+        <div class="nav-chapter-title">3. Pitch & Articulation</div>
+        <a class="nav-link" href="#sec-pitch-modes"><i class="bi bi-music-note-beamed me-2"></i>4 Pitch Modes Overview</a>
+        <a class="nav-link" href="#sec-portamento"><i class="bi bi-bezier me-2"></i>Portamento (Legato Glide)</a>
+        <a class="nav-link" href="#sec-glide-rate"><i class="bi bi-sliders me-2"></i>Glide Rate Speed Control</a>
+
+        <div class="nav-chapter-title">4. Sound Synthesis Engine</div>
+        <a class="nav-link" href="#sec-dual-osc"><i class="bi bi-activity me-2"></i>10 Analog &amp; Digital Waveforms</a>
+        <a class="nav-link" href="#sec-unison"><i class="bi bi-layers me-2"></i>3-Voice Stereo Unison</a>
+        <a class="nav-link" href="#sec-filter-adsr"><i class="bi bi-soundwave me-2"></i>Moog Filter &amp; ADSR Envelope</a>
+
+        <div class="nav-chapter-title">5. Hybrid SoundFont (SF2)</div>
+        <a class="nav-link" href="#sec-soundfont-overview"><i class="bi bi-file-earmark-music me-2"></i>SoundFont Architecture &amp; Banks</a>
+        <a class="nav-link" href="#sec-sf2-presets"><i class="bi bi-collection-play me-2"></i>Preset Browser &amp; Prev/Next</a>
+        <a class="nav-link" href="#sec-hybrid-mix"><i class="bi bi-disc me-2"></i>Hybrid Mix &amp; Velocity Scaling</a>
+        <a class="nav-link" href="#sec-import-sf2"><i class="bi bi-upload me-2"></i>Importing Custom SF2 Files</a>
+
+        <div class="nav-chapter-title">6. Scales &amp; Oriental Matrix</div>
+        <a class="nav-link" href="#sec-scales"><i class="bi bi-bar-chart-steps me-2"></i>Western &amp; Global Scales</a>
+        <a class="nav-link" href="#sec-scale-lock"><i class="bi bi-lock me-2"></i>Scale Lock Across Presets</a>
+        <a class="nav-link" href="#sec-oriental-matrix"><i class="bi bi-globe me-2"></i>1/4 Tone Oriental &amp; Maqamat</a>
+
+        <div class="nav-chapter-title">7. Master BPM &amp; Tap Tempo</div>
+        <a class="nav-link" href="#sec-master-bpm"><i class="bi bi-clock-history me-2"></i>Global BPM Clock &amp; Tap Pad</a>
+        <a class="nav-link" href="#sec-quick-tempo"><i class="bi bi-speedometer2 me-2"></i>Quick Tempo (80-160 BPM)</a>
+        <a class="nav-link" href="#sec-delay-sync"><i class="bi bi-link-45deg me-2"></i>Studio Delay Rhythm Sync</a>
+
+        <div class="nav-chapter-title">8. Studio Arpeggiator (Pro)</div>
+        <a class="nav-link" href="#sec-arpeggiator-overview"><i class="bi bi-soundwave me-2"></i>FL Studio Style Arp Engine</a>
+        <a class="nav-link" href="#sec-arp-pingpong"><i class="bi bi-arrow-left-right me-2"></i>Alternating Dual-Voice Audio</a>
+        <a class="nav-link" href="#sec-arp-patterns"><i class="bi bi-diagram-3 me-2"></i>Patterns, Rates &amp; Octaves</a>
+        <a class="nav-link" href="#sec-arp-gate"><i class="bi bi-sliders2 me-2"></i>Note Gate (Legato/Smooth/Staccato)</a>
+        <a class="nav-link" href="#sec-arp-latch"><i class="bi bi-pin-angle me-2"></i>Latch / Chord Hold Mode</a>
+
+        <div class="nav-chapter-title">9. Studio FX &amp; Presets</div>
+        <a class="nav-link" href="#sec-delay-fx"><i class="bi bi-arrow-repeat me-2"></i>Stereo Delay &amp; Infinite Freeze</a>
+        <a class="nav-link" href="#sec-presets"><i class="bi bi-bookmark-star me-2"></i>Preset Manager &amp; Export</a>
+        <a class="nav-link" href="#sec-live-sets"><i class="bi bi-broadcast me-2"></i>Live Set Performance Slots</a>
+
+        <div class="nav-chapter-title">10. Recording &amp; DAW Integration</div>
+        <a class="nav-link" href="#sec-wav-recorder"><i class="bi bi-record-circle me-2"></i>Lossless WAV Master Recorder</a>
+        <a class="nav-link" href="#sec-midi-controller"><i class="bi bi-usb-symbol me-2"></i>MPE Controller &amp; FL Studio</a>
+        <a class="nav-link" href="#sec-motion-modulation"><i class="bi bi-phone me-2"></i>Motion Tilt Modulation</a>
+
+        <div class="nav-chapter-title">11. Support &amp; Troubleshooting</div>
+        <a class="nav-link" href="#sec-troubleshooting"><i class="bi bi-wrench-adjustable me-2"></i>Troubleshooting &amp; Glitch Fixes</a>
+        <a class="nav-link" href="#sec-faq"><i class="bi bi-question-circle me-2"></i>Frequently Asked Questions</a>
+      </nav>
+    </aside>
+
+    <!-- MOBILE OFFCANVAS SIDEBAR -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+      <div class="offcanvas-header border-bottom border-secondary border-opacity-25">
+        <h5 class="offcanvas-title fw-bold text-info" id="sidebarOffcanvasLabel"><i class="bi bi-book me-2"></i>Vektrum Manual</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body p-3">
+        <!-- Cloned navigation links for mobile view via JS or matching IDs -->
+        <div id="mobileSidebarNav"></div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- RIGHT MAIN DOCUMENTATION CONTENT -->
+    <!-- ========================================================================= -->
+    <main class="manual-content">
+
+      <!-- ========================================================================= -->
+      <!-- COVER & WELCOME -->
+      <!-- ========================================================================= -->
+      <section id="cover" class="mb-5 pb-4 border-bottom border-secondary border-opacity-25">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="badge bg-info text-dark fw-bold px-3 py-2 rounded-pill"><i class="bi bi-patch-check-fill me-1"></i>Official Documentation</span>
+          <span class="badge bg-secondary text-light px-3 py-2 rounded-pill">App Version 1.5.5 (Build 15)</span>
+        </div>
+        <h1 class="doc-main-title">Vektrum Pro Synthesizer</h1>
+        <p class="lead text-light-emphasis">Comprehensive User Manual, Acoustic Architecture & MPE Controller Reference Guide</p>
+        
+		<img src="wl-img/0001.jpg" class="img img-thumbnail w-100" />
+
+        <div class="doc-callout">
+          <h5 class="fw-bold mb-1"><i class="bi bi-info-circle-fill me-2 text-info"></i>Welcome to Vektrum Pro</h5>
+          <p class="mb-0">
+            <strong>Vektrum Pro</strong> is a state-of-the-art, multi-dimensional expressive synthesizer and MPE (MIDI Polyphonic Expression) controller engineered specifically for Android devices. Featuring a custom ultra-low latency native C++ audio engine (powered by Google Oboe and AAudio), continuous microtonal ribbon surface, dual morphing oscillators, hybrid SoundFont (SF2) sampling, studio stereo delay, and full Arabic/Oriental quarter-tone matrices, Vektrum bridges the tactile freedom of acoustic instruments with the infinite soundscapes of modular synthesis.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 1: GETTING STARTED -->
+      <!-- ========================================================================= -->
+      <section id="sec-intro">
+        <h2 class="doc-chapter-heading"><i class="bi bi-stars text-info"></i>1. Product Overview</h2>
+        <p>
+          Unlike conventional keyboard synthesizers restricted to binary on/off switches, Vektrum Pro implements a continuous tactile ribbon interface inspired by legendary expressive instruments such as the <em>Haken Continuum Fingerboard</em>, <em>Ondes Martenot</em>, and <em>Roli Seaboard</em>. 
+        </p>
+        <p>
+          Every finger touch is processed simultaneously across multiple expressive axes:
+        </p>
+        <div class="row g-3 my-2">
+          <div class="col-md-4">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-arrows-expand me-2"></i>X-Axis: Continuous Pitch</h6>
+              <p class="small text-muted mb-0">Continuous horizontal position maps to microtonal pitch, portamento, or quantized scale steps with zero seam boundaries.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-arrows-vertical me-2"></i>Y-Axis: Timbre & Dynamic Velocity</h6>
+              <p class="small text-muted mb-0">Vertical slide dynamically modulates 24dB Moog filter cutoff and SoundFont velocity scaling from 0% (bottom) to 120% (top).</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-hand-index-thumb me-2"></i>Z-Axis: Pressure & Aftertouch</h6>
+              <p class="small text-muted mb-0">Dynamic contact surface area detection calculates continuous channel pressure for expressive aftertouch swells.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-quickstart" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-play-circle text-info"></i>1.2 Quick Start Guide</h3>
+        <ol class="list-group list-group-numbered mb-3">
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>Launch & Audio Setup:</strong> Open Vektrum Pro in landscape mode. Plug in low-latency wired headphones or connect via USB Audio interface for maximum acoustic clarity.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>Strike a Note:</strong> Tap anywhere on the illuminated ribbon grid. The upper section triggers high-velocity, bright tones, while the lower section yields gentle, soft expressions.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>Perform a Horizontal Slide:</strong> Glide your finger across note columns to hear lush portamento or continuous analog pitch glides.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>Switch Presets:</strong> Tap the <strong>PREV [◀]</strong> and <strong>NEXT [▶]</strong> buttons on the top bar or tap the preset name to open the full catalog.
+          </li>
+        </ol>
+
+        
+		<img src="wl-img/0002.jpg" class="img img-fluid w-100"/>
+		
+      </section>
+
+      <section id="sec-layout" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-aspect-ratio text-info"></i>1.3 Interface Layout Architecture</h3>
+        <p>The Vektrum Pro interface is divided into three ergonomic performance zones:</p>
+        
+        <table class="table table-bordered param-table my-3">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Zone</th>
+              <th style="width: 35%;">Controls Included</th>
+              <th>Primary Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold text-info">Top Navigation Bar</td>
+              <td>Preset Selector (Prev/Next/List), Scale, Root Key, 1/4 Tone Matrix, Octave (-/+), Span, Split Mode, Pitch Mode, Theme, MIDI Hub, WAV Record.</td>
+              <td>Global performance routing, scale configuration, preset navigation, and system settings.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">Center Ribbon Surface</td>
+              <td>Continuous multi-touch grid, root note indicators, note labels, visual touch ripples, split keyboard boundary line.</td>
+              <td>Tactile multi-touch performance ribbon for polyphonic playing, sliding, and vibrato.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">Bottom FX & Synthesis Panel</td>
+              <td>Wave A & B Selectors, Master Volume, Unison Detune, Moog Filter Q, ADSR Envelope, Delay FX (Time, Feedback, Volume, Width, Freeze), Glide Rate, SoundFont Sampler controls.</td>
+              <td>Real-time sound sculpting, acoustic envelope shaping, delay manipulation, and hybrid acoustic layer blending.</td>
+            </tr>
+          </tbody>
+        </table>
+
+		<img src="wl-img/0003.png" class="img img-fluid w-100"/>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 2: PLAYING SURFACE & MULTI-TOUCH -->
+      <!-- ========================================================================= -->
+      <section id="sec-ribbon-grid" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-grid-3x3 text-info"></i>2. Ribbon & Multi-Touch Playing Surface</h2>
+        <p>
+          The central ribbon of Vektrum Pro operates at an ultra-responsive 120Hz/240Hz touch sampling rate. Unlike standard piano keyboards with physical gaps between black and white keys, the ribbon surface presents continuous columns proportional to the selected musical scale.
+        </p>
+
+        <h3 class="doc-section-heading">2.1 Visual Grid & Root Note Highlights</h3>
+        <ul>
+          <li><strong>Root Key Highlight:</strong> The fundamental tonic note (e.g., C, D, or A) is highlighted with high-contrast accent illumination and distinct column striping.</li>
+          <li><strong>Scale Step Columns:</strong> All in-scale intervals are clearly labeled with note names and octaves (e.g., <code>C3</code>, <code>E3</code>, <code>G3</code>).</li>
+          <li><strong>Target Latching & Hysteresis:</strong> A mathematical deadband prevents accidental pitch fluttering when fingers rest at column boundaries. A finger must intentionally cross by more than 60% of the column width to trigger a discrete note switch.</li>
+        </ul>
+
+        <img src="wl-img/0004.png" class="img img-fluid w-100"/>
+		
+      </section>
+
+      <section id="sec-expressive-touch" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-fingerprint text-info"></i>2.2 Multi-Dimensional Expression (3D Touch)</h3>
+        <p>Each individual finger contact independently manipulates three simultaneous acoustic parameters:</p>
+        
+        <div class="card mb-3 bg-body-tertiary border-secondary border-opacity-25">
+          <div class="card-body">
+            <h5 class="card-title text-info"><i class="bi bi-arrow-up-circle me-2"></i>Vertical Strike Velocity & Expression</h5>
+            <p class="card-text mb-1">
+              Touching higher up on the ribbon strikes the note with high velocity (up to 1.0 forte), simultaneously opening the 24dB low-pass filter cutoff for bright, aggressive leads. Touching near the bottom produces soft, delicate pianissimo timbre.
+            </p>
+            <p class="card-text small text-muted">
+              <em>Note for SoundFont SF2:</em> The vertical slide velocity scales from <strong>0% (bottom) to 120% (top)</strong>, reaching full 100% velocity at ~83% of the ribbon height so you never have to strain your fingers against the very top bezel.
+            </p>
+          </div>
+        </div>
+
+        <div class="card mb-3 bg-body-tertiary border-secondary border-opacity-25">
+          <div class="card-body">
+            <h5 class="card-title text-info"><i class="bi bi-shield-shaded me-2"></i>Continuous Pressure / Aftertouch</h5>
+            <p class="card-text mb-0">
+              By flattening your finger pad to increase contact area, Vektrum Pro calculates simulated pressure (Aftertouch), introducing subtle drive, saturation, and filter resonance swells to sustained chords or lead solos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-split-mode" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-layout-split text-info"></i>2.3 Split Keyboard Mode (Dual-Zone Split)</h3>
+        <p>
+          Tapping the <strong>SPLIT</strong> button on the top bar bisects the playing surface horizontally into two completely independent performance ribbons:
+        </p>
+        <ul>
+          <li><strong>Upper Zone:</strong> Optimized for high-register lead melodies, soaring solos, and expressive vibrato ribbons.</li>
+          <li><strong>Lower Zone:</strong> Transposed down by 1 to 2 octaves, configured for walking basslines, deep sub-basses, or rhythmic chord pads.</li>
+          <li><strong>Independent Y-Axis:</strong> Each split half calculates vertical cutoff and velocity scaling independently from its respective center partition line.</li>
+        </ul>
+
+        <img src="wl-img/0005.png" class="img img-fluid w-100"/>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 3: PITCH MODES & GLIDE CONTROL -->
+      <!-- ========================================================================= -->
+      <section id="sec-pitch-modes" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-music-note-beamed text-info"></i>3. Pitch Modes & Glide Articulation</h2>
+        <p>
+          Vektrum Pro offers <strong>4 distinct pitch modes</strong> to suit any performance genre, selectable via the <strong>btnPitchMode</strong> button on the top bar:
+        </p>
+
+        <div class="row g-3 my-2">
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <span class="badge bg-secondary mb-2">Mode 0</span>
+              <h5 class="fw-bold text-light">LOCKED</h5>
+              <p class="small text-muted mb-0">
+                Discrete note snapping only. Operates exactly like an acoustic piano keyboard. Sliding your finger jumps instantly between scale notes without any pitch gliding.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100 border-info border-opacity-50">
+              <span class="badge bg-info text-dark fw-bold mb-2">Mode 1 &bull; Pro Highlight</span>
+              <h5 class="fw-bold text-info">PORTAMENTO</h5>
+              <p class="small text-muted mb-0">
+                <strong>Legato Quantized Glide (Minimoog / TB-303 Acid style).</strong> Notes stay strictly quantized to scale intervals while resting on a key. When sliding into a new note, the pitch glides smoothly directly to the target note, bypassing all intermediate chromatic/microtonal notes!
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <span class="badge bg-secondary mb-2">Mode 2</span>
+              <h5 class="fw-bold text-light">GLIDE</h5>
+              <p class="small text-muted mb-0">
+                Continuous pitch bend with magnetic attraction. Provides expressive micro-pitch deviation with an acoustic "magnetic pull" snapping to the nearest scale tone.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <span class="badge bg-secondary mb-2">Mode 3</span>
+              <h5 class="fw-bold text-light">FRETLESS</h5>
+              <p class="small text-muted mb-0">
+                100% continuous microtonal ribbon (Violin, Cello, Theremin). Absolute continuous pitch tracking without scale quantization for infinite microtonal expression.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <img src="wl-img/0006.png" class="img img-fluid w-100"/>
+      </section>
+
+      <section id="sec-portamento" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-bezier text-info"></i>3.2 Deep Dive: Portamento (Legato Glide)</h3>
+        <p>
+          In classic synthesizers like the Minimoog, Roland TB-303, and Prophet-5, <em>portamento</em> allows keyboardists to slide between discrete musical intervals without sounding chromatic frets. 
+        </p>
+        <p>
+          In Vektrum Pro, Portamento mode is engineered with <strong>dual-engine mathematical continuity</strong>:
+        </p>
+        <ul>
+          <li><strong>Native C++ Oscillators:</strong> Employs an audio-rate exponential curve computed sample-by-sample at 48,000 Hz, eliminating zipper noise, steps, or clicks.</li>
+          <li><strong>SoundFont SF2 Sampler:</strong> Runs an audio-buffer pitch-interpolator operating every 2 to 4 milliseconds, ensuring acoustic SF2 samples (such as violin, brass, flute, and synth leads) glide with genuine analog legato grace.</li>
+        </ul>
+      </section>
+
+      <section id="sec-glide-rate" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-sliders text-info"></i>3.3 Glide Rate Speed Control</h3>
+        <p>
+          Located in the bottom sound panel, the <strong>GLIDE RATE</strong> slider governs the time constant of pitch transitions:
+        </p>
+        <ul>
+          <li><strong>0% - 15%:</strong> Ultra-fast, snappy transitions (~20ms), ideal for fast arpeggios, staccato funk, and tight synth basses.</li>
+          <li><strong>35% - 65%:</strong> Classic musical legato portamento (~70ms to 120ms), optimal for expressive lead solos and brass melodies.</li>
+          <li><strong>75% - 100%:</strong> Majestic, sweeping slow glides (~250ms to 500ms), perfect for ambient pads, cinematic soundscapes, and dramatic drops.</li>
+        </ul>
+        <div class="doc-callout doc-callout-tip">
+          <strong>Smart Preset Sync:</strong> Setting Glide Rate to 0% automatically switches the pitch mode to <strong>LOCKED</strong>. Raising the slider immediately switches the mode to <strong>PORTAMENTO</strong> or <strong>GLIDE</strong>.
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 4: DUAL-OSCILLATOR SYNTHESIS ENGINE -->
+      <!-- ========================================================================= -->
+      <section id="sec-dual-osc" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-activity text-info"></i>4. Dual-Oscillator Synthesis Engine (C++ NDK)</h2>
+        <p>
+          At the heart of Vektrum Pro lies an industrial-grade audio engine written in clean, thread-safe modern C++17. Running directly on Android's low-latency audio HAL via Google Oboe, Vektrum achieves real-world audio roundtrip latency under 10 milliseconds on supported hardware.
+        </p>
+
+        <h3 class="doc-section-heading">4.1 10 Analog &amp; Digital Waveforms with Continuous Morphing</h3>
+        <p>Vektrum Pro features two independent primary oscillators (<strong>Wave A</strong> and <strong>Wave B</strong>) capable of generating 10 professional-grade synthesized waveforms:</p>
+        <div class="row g-3 my-2">
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-circle-fill me-2"></i>1. Sine</h6>
+              <p class="small text-muted mb-0">Pure fundamental tone with zero harmonic distortion. Ideal for deep sub-basses, pristine flute keys, and clean sine plucks.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-triangle me-2"></i>2. Triangle</h6>
+              <p class="small text-muted mb-0">Warm and gentle tone featuring a strong fundamental with subtle odd harmonics. Excellent for soft acoustic woodwinds and electric pianos.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-triangle-fill me-2"></i>3. Sawtooth</h6>
+              <p class="small text-muted mb-0">Bright, sharp, harmonically dense waveform containing all even and odd harmonics. The cornerstone of brassy synth leads and punchy analog basslines.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-square-fill me-2"></i>4. Square / Pulse</h6>
+              <p class="small text-muted mb-0">Hollow vintage character rich in odd harmonics. Perfect for acid squelch basses, retro 8-bit chip tunes, and woody clarinet tones.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-soundwave me-2"></i>5. Pulse Width Modulation (PWM)</h6>
+              <p class="small text-muted mb-0">Continuously modulated duty cycle that imparts rich, swirling, chorus-like movement without requiring external effects.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-layers-fill me-2"></i>6. SuperSaw</h6>
+              <p class="small text-muted mb-0">Multi-saw stacked oscillator with stereo detune spread inspired by the iconic Roland JP-8000. Delivers massive, stadium-sized EDM and trance anthems.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-chat-quote-fill me-2"></i>7. Vocal Formant</h6>
+              <p class="small text-muted mb-0">Acoustic resonance modeling of the human vocal tract (A-E-I-O-U formants). Produces expressive talking synthesizers and soulful singing leads.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-wind me-2"></i>8. Breathy Noise</h6>
+              <p class="small text-muted mb-0">Band-limited acoustic air noise for realistic pan-flute breath attacks, percussive wind chiffs, and atmospheric cinematic textures.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-bell-fill me-2"></i>9. Metallic Bell</h6>
+              <p class="small text-muted mb-0">Inharmonic frequency modulation (FM) spectrum generating crystalline chimes, shimmering glockenspiels, and vibraphone harmonics.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-fire me-2"></i>10. Warm Overdrive</h6>
+              <p class="small text-muted mb-0">Soft-saturating analog waveshaping with tube-like harmonic warmth. Adds aggressive punch and grit to modern solo leads.</p>
+            </div>
+          </div>
+        </div>
+        <p>
+          The engine allows you to pair any two waveforms (<strong>Wave A</strong> and <strong>Wave B</strong>) and continuously morph between them via touch ribbon vertical position or automated LFO modulation, producing infinite acoustic timbres.
+        </p>
+
+        <img src="wl-img/0007.png" class="img img-fluid w-100"/>
+      </section>
+
+      <section id="sec-unison" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-layers text-info"></i>4.2 3-Voice Stereo Unison & Detune Spreader</h3>
+        <p>
+          Each polyphonic touch triggers three parallel oscillator voices per finger. The <strong>UNISON DETUNE</strong> slider spreads the frequencies of voice 2 and voice 3 symmetrically by up to &plusmn;35 cents, while panning them across the stereo field.
+        </p>
+        <ul>
+          <li><strong>0 Cents:</strong> Pure, focused mono directness for cutting basslines.</li>
+          <li><strong>10 - 18 Cents:</strong> Lush analog chorusing, imparting immense warmth and organic movement.</li>
+          <li><strong>25 - 35 Cents:</strong> Massive "Supersaw" EDM stadium leads and cinematic wall-of-sound textures.</li>
+        </ul>
+      </section>
+
+      <section id="sec-filter-adsr" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-soundwave text-info"></i>4.3 Moog-Style Filter & ADSR Envelope Generator</h3>
+        <p>
+          Vektrum Pro includes a digital model of the classic 24dB/octave 4-pole Moog ladder low-pass filter, featuring auto-compensated resonance (Q):
+        </p>
+        <ul>
+          <li><strong>Filter Resonance (Q):</strong> Adjustable from 0.707 (transparent butterworth roll-off) up to 8.0 (screaming self-oscillation and aggressive squelch).</li>
+          <li><strong>Attack (A):</strong> 0.001s to 2.0s. Controls how quickly the sound reaches peak volume upon touch.</li>
+          <li><strong>Decay (D):</strong> 0.01s to 3.0s. Governs the time taken to drop from peak strike to sustained level.</li>
+          <li><strong>Sustain (S):</strong> 0% to 100%. The steady volume maintained as long as your finger remains held.</li>
+          <li><strong>Release (R):</strong> 0.01s to 5.0s. The acoustic decay tail lingering after lifting your finger.</li>
+        </ul>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 5: HYBRID SOUNDFONT (SF2) ENGINE -->
+      <!-- ========================================================================= -->
+      <section id="sec-soundfont-overview" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-file-earmark-music text-info"></i>5. Hybrid SoundFont (SF2) Sampler</h2>
+        <p>
+          Vektrum Pro goes beyond pure synthetic waveforms by incorporating a complete <strong>SoundFont 2 (SF2) Sample Engine</strong>. This allows you to blend pure analog oscillators with real-world acoustic instruments (Acoustic Pianos, Strings, Middle Eastern Ouds, Saxophones, Flutes, and Ethnic Percussion).
+        </p>
+
+        <h3 class="doc-section-heading">5.1 SoundFont Architecture &amp; 5 Built-in SoundBanks</h3>
+        <p>
+          Managing soundbank presets is streamlined through dedicated top-bar and bottom-panel controllers. Vektrum Pro includes 5 comprehensive factory soundbanks containing hundreds of multi-sampled instruments:
+        </p>
+        <div class="row g-2 mb-3">
+          <div class="col-md-4"><div class="p-2 border rounded bg-body-tertiary small"><strong class="text-info">1. Orchestra Collection:</strong> Symphonic strings, brass sections, woodwinds, and orchestral timpani.</div></div>
+          <div class="col-md-4"><div class="p-2 border rounded bg-body-tertiary small"><strong class="text-info">2. General MIDI 2 (GM2):</strong> 320+ stage instruments covering guitars, organs, basses, and drums.</div></div>
+          <div class="col-md-4"><div class="p-2 border rounded bg-body-tertiary small"><strong class="text-info">3. Vintage Synth Vault:</strong> Classic analog strings, resonant filter bass, and polyphonic synth brass.</div></div>
+          <div class="col-md-6"><div class="p-2 border rounded bg-body-tertiary small"><strong class="text-info">4. Acoustic Concert Grand:</strong> Multi-velocity acoustic grand pianos with rich harmonic resonance.</div></div>
+          <div class="col-md-6"><div class="p-2 border rounded bg-body-tertiary small"><strong class="text-info">5. World &amp; Exotic Instruments:</strong> Middle Eastern Ouds, Turkish Ney, Sitar, Asian Koto, and ethnic reeds.</div></div>
+        </div>
+        <ul>
+          <li><strong>Bank Dropdown (spSoundFontBank):</strong> Instantly switches between factory soundbanks and user-imported SF2 libraries.</li>
+          <li><strong>Preset Selector Buttons:</strong>
+            <ul>
+              <li><strong>PREV [◀] (btnPrevSfPreset):</strong> Immediately steps back to the preceding SoundFont instrument.</li>
+              <li><strong>PRESET (btnSfPreset):</strong> Displays the active preset name and opens the full scrolling search dropdown list.</li>
+              <li><strong>NEXT [▶] (btnNextSfPreset):</strong> Cycles forward to the next instrument instantly during live performance.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <img src="wl-img/0009.png" class="img img-fluid w-100" />
+      </section>
+
+      <section id="sec-hybrid-mix" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-disc text-info"></i>5.2 Hybrid Mix &amp; Calibrated Velocity Volume</h3>
+        <p>
+          The <strong>HYBRID MIX</strong> slider controls the acoustic blend ratio between the C++ Analog Synthesizer and the SF2 Sampler:
+        </p>
+        <ul>
+          <li><strong>0%:</strong> Pure Analog Modeling Synthesis (100% C++ Waveform Oscillators).</li>
+          <li><strong>50%:</strong> Balanced Hybrid Layer (e.g., analog saw lead layered seamlessly on top of an acoustic cello).</li>
+          <li><strong>100%:</strong> Pure SoundFont Acoustic Sample Playback.</li>
+        </ul>
+        <div class="doc-callout doc-callout-tip">
+          <strong>Acoustic Gain Calibration &amp; Dynamic Velocity:</strong> Vektrum Pro implements an intelligent RMS gain calibration algorithm that balances the output volume of SoundFont instruments with synthetic waveforms, eliminating sudden volume spikes when switching between patches. Furthermore, SoundFont velocity scales dynamically across vertical ribbon touch from 0% (pianissimo) up to 120% (fortissimo bite) near the top ribbon edge.
+        </div>
+      </section>
+
+      <section id="sec-import-sf2" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-upload text-info"></i>5.3 Importing Custom User SoundFonts (.sf2)</h3>
+        <p>
+          You can expand Vektrum Pro with any standard SoundFont 2 (<code>.sf2</code>) file from your device storage:
+        </p>
+        <ol class="list-group list-group-numbered mb-3">
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            Tap the <strong>SoundFont Bank</strong> dropdown and select <strong>"+ Import SF2 File..."</strong>.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            Use the Android File Picker to locate your <code>.sf2</code> file on your internal storage or SD card.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>Real-Time Import Progress Dialog:</strong> As soon as a file is selected, Vektrum Pro displays a real-time progress dialog showing the file name, copied bytes / total size, percentage progress bar, and stage status.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>Import Background Option:</strong> For massive soundbanks (100MB - 500MB+), tap the <strong>IMPORT BACKGROUND</strong> button. The dialog closes instantly so you can continue playing and browsing while the file imports quietly in the background. A notification announces when the instruments are loaded and ready!
+          </li>
+        </ol>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog Progress Import SoundFont SF2: Menampilkan nama file, persentase progress bar, ukuran file dalam MB, status ekstraksi, dan tombol IMPORT BACKGROUND &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Screenshot of `dialog_soundfont_import_progress.xml` showing active progress bar, size info, and `IMPORT BACKGROUND` button.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 6: SCALES & ORIENTAL MATRIX -->
+      <!-- ========================================================================= -->
+      <section id="sec-scales" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-bar-chart-steps text-info"></i>6. Scales & Oriental Quarter-Tone Tuning</h2>
+        <p>
+          Vektrum Pro supports over 40 diverse musical scale modes from Western, Middle Eastern, Indian, and Asian traditions:
+        </p>
+        <div class="row g-2 my-2">
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Major / Ionian</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Natural Minor</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Harmonic Minor</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Melodic Minor</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Dorian</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Phrygian Dominant</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Lydian</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Mixolydian</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Major Pentatonic</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Minor Pentatonic</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Blues Scale</div></div>
+          <div class="col-6 col-md-3"><div class="p-2 border rounded text-center small bg-body-tertiary">Hungarian Gypsy</div></div>
+        </div>
+
+        <h3 class="doc-section-heading">6.1 Root Key Transposition</h3>
+        <p>
+          Transposing the scale across the ribbon is effortless:
+        </p>
+        <ul>
+          <li><strong>Root Key [- / +]:</strong> Transposes the root key of the entire ribbon chromatically by semitones (e.g. C &rarr; C# &rarr; D).</li>
+          <li><strong>Direct Key Selector:</strong> Tap on the Root Key badge (e.g. "KEY C") to open the 1-tap chromatic key picker.</li>
+        </ul>
+      </section>
+
+      <section id="sec-scale-lock" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-lock text-info"></i>6.2 Scale Lock Feature (Audition Presets in your Chosen Scale)</h3>
+        <p>
+          A standout professional feature in Vektrum Pro is the dedicated <strong>SCALE LOCK</strong> button (located directly beside the Scale selector on the top toolbar):
+        </p>
+        <div class="card bg-body-tertiary border-secondary border-opacity-25 p-3 mb-3">
+          <h6 class="fw-bold text-info mb-2"><i class="bi bi-shield-lock-fill me-2"></i>How Scale Lock Enhances Performance:</h6>
+          <p class="small text-muted mb-2">
+            By default, factory presets store the scale chosen by their sound designer (e.g., Preset A might be saved in D Minor, while Preset B is in G Major Pentatonic). When you are composing a track or performing live in a specific musical key (e.g. F# Dorian or E Maqam Rast), you often want to audition different synth patches <em>without the scale resetting on every preset change</em>.
+          </p>
+          <ul class="small text-muted mb-0">
+            <li><strong>Scale Lock ON (Illuminated Neon Accent Border):</strong> Your active root key, scale mode, and microtonal quarter-tone settings remain strictly locked. As you press <strong>PREV [◀]</strong>, <strong>NEXT [▶]</strong>, or select custom patches, only the sound waveform, filter, and envelopes change—your musical scale is 100% preserved!</li>
+            <li><strong>Scale Lock OFF (Muted Gray):</strong> Loading a preset automatically restores whatever scale and tuning was saved into that preset file.</li>
+          </ul>
+        </div>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Tombol Scale Lock Aktif di Top Toolbar: Menampilkan tombol Scale Lock dengan icon gembok menyala cyan di samping tombol Scale &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Close-up screenshot of the top toolbar showing the Scale Lock button engaged alongside the Scale name badge.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <section id="sec-oriental-matrix" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-globe text-info"></i>6.3 Oriental Matrix &amp; Quarter-Tone (Sikka) Tuning</h3>
+        <p>
+          Tapping the <strong>1/4 TONE</strong> button opens the dedicated Middle Eastern Oriental Tuning Matrix dialog. This unlocks traditional Arabic, Turkish, and Persian microtonal maqamat:
+        </p>
+        
+        <table class="table table-bordered param-table my-3">
+          <thead>
+            <tr>
+              <th>Maqam Preset</th>
+              <th>Microtonal Detuned Notes (-50 Cents Quarter-Tone)</th>
+              <th>Typical Emotional Mood</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold text-info">Maqam Rast</td>
+              <td>E &half; flat, B &half; flat</td>
+              <td>Pride, grandeur, clarity, and majesty.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">Maqam Bayati</td>
+              <td>E &half; flat</td>
+              <td>Vitality, joy, and deep emotional nostalgia.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">Maqam Saba</td>
+              <td>E &half; flat, G-flat</td>
+              <td>Deep sorrow, spiritual transcendence, longing.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">Maqam Sikah</td>
+              <td>E &half; flat, B &half; flat, F#</td>
+              <td>Solemn devotion, romantic warmth, meditation.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog Oriental 1/4 Tone Matrix: Menampilkan 12 tuts kromatik dengan tombol detune -50 cent dan preset Maqam Rast, Bayati, Saba, Sikah &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Screenshot of the Oriental Tuning Dialog showing the 12 chromatic note buttons with active quarter-tone flags.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 7: MASTER BPM & GLOBAL TAP TEMPO ENGINE -->
+      <!-- ========================================================================= -->
+      <section id="sec-master-bpm" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-clock-history text-info"></i>7. Master BPM &amp; Global Tap Tempo Engine</h2>
+        <p>
+          Vektrum Pro incorporates a centralized <strong>Master BPM Clock Engine</strong> that synchronizes rhythmic delay repeats, arpeggiator clock subdivisions, and live performance tempo in lockstep across the entire application.
+        </p>
+
+        <h3 class="doc-section-heading">7.1 Real-Time Tap Tempo Pad &amp; Interactive Controls</h3>
+        <p>
+          Tapping the <strong>TEMPO (BPM)</strong> button on the top toolbar opens the <strong>Global Master Tempo Dialog</strong>:
+        </p>
+        <div class="row g-3 my-2">
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-hand-index-thumb me-2"></i>Interactive Big Tap Pad</h6>
+              <p class="small text-muted mb-0">Tap the large responsive <strong>TAP TEMPO</strong> button in time with your live drummer, DJ track, or backing beat. The engine averages your strike intervals in real-time to compute the exact BPM instantly.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-pencil-square me-2"></i>Direct Numeric Input ("TAP TO EDIT")</h6>
+              <p class="small text-muted mb-0">Tap directly on the central <strong>120 BPM</strong> readout to trigger the numeric keypad dialog. Enter any exact tempo between <strong>40 and 280 BPM</strong> with 1-tap precision.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-plus-slash-minus me-2"></i>Steppers (-5, -1, +1, +5)</h6>
+              <p class="small text-muted mb-0">Fine-tune your tempo seamlessly during live performance without interrupting audio playback or arpeggiator grooves.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-sliders me-2"></i>Continuous Tempo SeekBar</h6>
+              <p class="small text-muted mb-0">Drag the smooth illuminated slider for broad tempo adjustments spanning 40 BPM (slow ambient ballads) to 280 BPM (speedcore &amp; drum'n'bass).</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="doc-section-heading" id="sec-quick-tempo">7.2 Quick Tempo Presets (80 &mdash; 160 BPM)</h3>
+        <p>
+          For instant stage adjustments without searching or sliding, Vektrum Pro provides 9 one-touch <strong>Quick Tempo Chips</strong>:
+        </p>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">80 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">90 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">100 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">110 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">120 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">130 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">140 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">150 BPM</span>
+          <span class="badge bg-body-tertiary border text-info px-3 py-2 fs-6">160 BPM</span>
+        </div>
+        <p class="small text-muted">
+          <em>Two-Way Live Sync:</em> When you adjust tempo via the slider, steppers, or Tap Pad, if the resulting BPM matches one of these values, its chip highlights automatically.
+        </p>
+
+        <h3 class="doc-section-heading" id="sec-delay-sync">7.3 Studio Stereo Delay Tempo Synchronization</h3>
+        <p>
+          Activate the <strong>SYNC DELAY TO TEMPO</strong> switch to mathematically lock your stereo delay echoes to the song's BPM. Choose from 6 standard musical subdivisions:
+        </p>
+        <table class="table table-bordered param-table my-3">
+          <thead>
+            <tr>
+              <th>Subdivision</th>
+              <th>Musical Note Value</th>
+              <th>Calculated Milliseconds @ 120 BPM</th>
+              <th>Best Acoustic Application</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-bold text-info">1/4 (Beat)</td>
+              <td>Quarter Note (1.0x)</td>
+              <td>500 ms</td>
+              <td>Standard straight delay echo on the beat.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">1/8 (Half)</td>
+              <td>Eighth Note (0.5x)</td>
+              <td>250 ms</td>
+              <td>Snappy rhythmic pulses and driving dance lines.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">1/8D (Dotted)</td>
+              <td>Dotted Eighth (0.75x)</td>
+              <td>375 ms</td>
+              <td>The legendary U2 / The Edge syncopated ambient bounce.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">1/16 (Slap)</td>
+              <td>Sixteenth Note (0.25x)</td>
+              <td>125 ms</td>
+              <td>Tight vintage rockabilly and slapback echo.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">1/8T (Triplet)</td>
+              <td>Eighth Triplet (0.333x)</td>
+              <td>166 ms</td>
+              <td>Shuffle grooves, trap hi-hat echos, and swing rhythms.</td>
+            </tr>
+            <tr>
+              <td class="fw-bold text-info">1/2 (Long)</td>
+              <td>Half Note (2.0x)</td>
+              <td>1000 ms</td>
+              <td>Expansive cinematic space echoes and ambient trails.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog Global Master Tempo &amp; Tap Tempo: Menampilkan tombol Tap Tempo, display BPM dengan hint TAP TO EDIT, 9 chip Quick Tempo (80-160), kartu Sync Delay dengan switch ON/OFF dan chip subdivisi (1/4, 1/8, 1/8D, 1/16, 1/8T, 1/2) &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Full screenshot of `dialog_tempo_sync.xml` showing the Tap Pad, Quick Tempo row, and Delay Sync card with active dotted 8th note chip.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 8: STUDIO ARPEGGIATOR (VEKTRUM PRO EXCLUSIVE) -->
+      <!-- ========================================================================= -->
+      <section id="sec-arpeggiator-overview" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-soundwave text-info"></i>8. Studio Arpeggiator (Vektrum Pro)</h2>
+        <p>
+          Inspired by the legendary arpeggiator in <em>FL Studio</em> and modern analog hardware synthesizers, Vektrum Pro includes an advanced, tempo-synced <strong>Studio Arpeggiator</strong> designed specifically for touch ribbon multi-touch performance.
+        </p>
+
+        <h3 class="doc-section-heading" id="sec-arp-pingpong">8.1 Alternating Ping-Pong Dual-Voice Audio Engine</h3>
+        <p>
+          Traditional mobile arpeggiators suffer from muddy overlapping notes, clicks, and double-triggering when multiple touch fingers are held. Vektrum Pro solves this through a custom <strong>Dual-Voice Alternating Ping-Pong Architecture</strong> in native C++:
+        </p>
+        <div class="row g-3 my-2">
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-arrow-left-right me-2"></i>Alternating Dual Voice (Voice 0 &harr; Voice 1)</h6>
+              <p class="small text-muted mb-0">Odd steps trigger Voice 0 while Voice 1 gracefully releases; even steps trigger Voice 1 while Voice 0 releases. This guarantees zero voice stealing clicks, clean note-to-note transitions, and 100% individual note definition.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-shield-check me-2"></i>Continuous Phase &amp; Filter Registers</h6>
+              <p class="small text-muted mb-0">Instead of wiping oscillator phase and filter history on every step, Vektrum Pro retains continuous oscillator phase and biquad delay registers. This eliminates 100% of the DC thumps, pops, and harmonic clicks common in mobile synths.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="doc-section-heading" id="sec-arp-patterns">8.2 Pattern Modes, Clock Rates &amp; Octaves</h3>
+        <p>
+          Configure the progression and rhythm of your arpeggios through dedicated controls:
+        </p>
+        <div class="row g-3 my-2">
+          <div class="col-md-4">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-arrow-up-right me-2"></i>Pattern Modes</h6>
+              <ul class="small text-muted mb-0 ps-3">
+                <li><strong>UP:</strong> Ascends from lowest held note to highest.</li>
+                <li><strong>DOWN:</strong> Descends from highest to lowest.</li>
+                <li><strong>UP / DOWN:</strong> Cycles up then down smoothly.</li>
+                <li><strong>RANDOM:</strong> Algorithmic generative note sequences.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-speedometer me-2"></i>Master Step Rate</h6>
+              <ul class="small text-muted mb-0 ps-3">
+                <li><strong>1/16 (Fast):</strong> 4 steps per beat &mdash; ideal for driving trance and synthwave arps.</li>
+                <li><strong>1/8 (Standard):</strong> 2 steps per beat.</li>
+                <li><strong>1/8T (Triplet):</strong> Swing triplet groove.</li>
+                <li><strong>1/4 (Pulse):</strong> 1 step per beat for bass pulses.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 border rounded bg-body-tertiary h-100">
+              <h6 class="fw-bold text-info"><i class="bi bi-music-note me-2"></i>Octave Expansion</h6>
+              <ul class="small text-muted mb-0 ps-3">
+                <li><strong>1 OCT:</strong> Confined to held pitches.</li>
+                <li><strong>2 OCT:</strong> Repeats pattern +1 octave above.</li>
+                <li><strong>3 OCT:</strong> Sweeps across a massive 3-octave melodic cascade.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="doc-section-heading" id="sec-arp-gate">8.3 Note Gate &amp; Articulation</h3>
+        <p>
+          Fine-tune the sustain duration of each note before the next step triggers:
+        </p>
+        <ul>
+          <li><strong>LEGATO (98% Gate &mdash; Default):</strong> Notes sustain continuously into the next step with zero silence gap, producing a buttery smooth, uninterrupted melodic flow.</li>
+          <li><strong>SMOOTH (92% Gate):</strong> Subtle acoustic separation between notes while retaining warm body and sustain.</li>
+          <li><strong>STACCATO (75% Gate):</strong> Detached, punchy, plucky articulation with clean rhythmic pauses between notes.</li>
+        </ul>
+
+        <h3 class="doc-section-heading" id="sec-arp-latch">8.4 Latch / Chord Hold Mode</h3>
+        <p>
+          Toggle <strong>LATCH / HOLD MODE</strong> to ON to enable hands-free arpeggios:
+        </p>
+        <div class="doc-callout doc-callout-tip">
+          <strong>Stage Freedom:</strong> Play a chord on the ribbon, release your hands, and Vektrum Pro will continue playing the rhythmic arpeggio infinitely! This frees both hands to perform expressive horizontal filter sweeps, modulate pitch, tweak delay FX, or play a secondary physical instrument. Touching a new chord seamlessly replaces the held notes in lockstep with the BPM clock.
+        </div>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog Arpeggiator Vektrum Pro: Menampilkan switch Enable Arpeggiator (ON/OFF), chip Pattern Mode (UP, DOWN, UP/DOWN, RANDOM), chip Step Rate (1/16, 1/8, 1/8T, 1/4), chip Note Gate (LEGATO, SMOOTH, STACCATO), chip Octave Range (1, 2, 3 OCT), dan switch Latch / Hold Mode &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Full screenshot of `dialog_arpeggiator.xml` with active pattern mode, rate chips, and highlighted card strokes.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 9: STUDIO FX & PRESETS -->
+      <!-- ========================================================================= -->
+      <section id="sec-delay-fx" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-arrow-repeat text-info"></i>9. Studio Stereo Delay &amp; Presets</h2>
+        <p>
+          Vektrum Pro includes a dedicated ping-pong cross-feedback delay line implemented directly in native C++ with DC-blocker filtering to prevent muddy low-end buildup.
+        </p>
+
+        <h3 class="doc-section-heading">9.1 Delay Parameters &amp; Smart-Touch Sliders</h3>
+        <ul>
+          <li><strong>Delay Time (ms):</strong> Regulates echo interval from tight slapback (50ms) to dub echos (1000ms).</li>
+          <li><strong>Delay Feedback:</strong> Regulates the number of repeating echoes. At 0%, you get a single clean reflection.</li>
+          <li><strong>Delay Volume:</strong> Sets wet/dry mix of the delay output into the master bus.</li>
+          <li><strong>Stereo Width:</strong> Controls ping-pong separation between left and right channels.</li>
+          <li><strong>Infinite Freeze (∞):</strong> Locks the echo buffer into an infinite, non-decaying ambient soundscape looper.</li>
+        </ul>
+
+        <div class="doc-callout doc-callout-tip">
+          <strong>Smart-Touch Thumb Detection:</strong> All sliders in the bottom bar feature intelligent thumb-hit bounds checking. You can freely drag and scroll the bottom bar left and right without accidentally jumping or altering slider values!
+        </div>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Panel Kontrol Delay FX di Bar Bawah: Menampilkan slider Time, Feedback, Volume, Width, dan tombol Infinite Freeze &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Screenshot of the Delay FX section in the bottom panel with Infinite Freeze toggle illuminated.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <section id="sec-presets" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-bookmark-star text-info"></i>9.2 Preset Browser, Save &amp; Share</h3>
+        <p>
+          Tapping the preset name button opens the categorized <strong>Preset Browser</strong> dialog:
+        </p>
+        <ul>
+          <li><strong>Category Filter Chips:</strong> Instantly filter between <em>ALL, LEADS, PADS, BASS, PLUCK, ORIENTAL,</em> and <em>SFX</em>.</li>
+          <li><strong>Saving Custom Patches:</strong> Tap the Save icon to store all synth parameters, scales, and FX settings under your own custom name.</li>
+          <li><strong>Preset Export &amp; Sharing (.vektrum / .json):</strong> One-tap share button exports your patch directly to WhatsApp, Telegram, Google Drive, or email.</li>
+          <li><strong>Preset Import:</strong> Automatically parses and verifies shared <code>.vektrum</code> files sent by fellow musicians.</li>
+        </ul>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog Preset Browser: Menampilkan list preset, chip kategori (Leads, Pads, Bass, dll), tombol Save, Share, dan Delete &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Screenshot of the Preset Browser dialog with category filter chips and preset rows.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <section id="sec-live-sets" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-broadcast text-info"></i>9.3 Live Set Performance Slots</h3>
+        <p>
+          For stage keyboardists, the <strong>Live Set</strong> feature allows you to bank up to 16 quick-recall performance slots. Switch between completely different patches (e.g. Lead &rarr; Acoustic Piano &rarr; Synth Bass) with zero audio dropouts or loading lag during live performance transitions.
+        </p>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 10: RECORDING & DAW INTEGRATION -->
+      <!-- ========================================================================= -->
+      <section id="sec-wav-recorder" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-record-circle text-info"></i>10. Lossless WAV Recording &amp; DAW Integration</h2>
+        <p>
+          Vektrum Pro allows you to capture live performances in pristine, uncompressed <strong>32-bit Float 48 kHz stereo WAV</strong> format directly from the master audio stream with zero CPU latency hit.
+        </p>
+
+        <h3 class="doc-section-heading">10.1 Recording Workflow &amp; Storage Directory</h3>
+        <ol class="list-group list-group-numbered mb-3">
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            Tap the red <strong>REC</strong> button on the top bar. The recording timer pulses red as audio is streamed to flash storage.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            Tap <strong>STOP</strong> when finished. The <strong>Recording Preview Dialog</strong> automatically appears.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            Audition your recording with the built-in mini player, view the visual waveform, or tap <strong>SHARE</strong> to send to your DAW or cloud drive.
+          </li>
+          <li class="list-group-item bg-body-tertiary border-secondary border-opacity-25">
+            <strong>1-Tap Copy Storage Location:</strong> The dialog clearly displays the physical device storage path (e.g. <code>/storage/emulated/0/Music/Vektrum/</code>) and includes a 1-tap <strong>COPY</strong> button for quick file manager access.
+          </li>
+        </ol>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog Recording Preview: Menampilkan pemutar audio, durasi rekaman, tombol Play/Pause, tombol Share, dan informasi direktori penyimpanan dengan tombol Copy &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Screenshot of `dialog_recording_preview.xml` showing waveform playback, storage directory path, and Copy button.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <section id="sec-midi-controller" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-usb-symbol text-info"></i>10.2 MPE MIDI Controller &amp; FL Studio Integration</h3>
+        <p>
+          Vektrum Pro functions as a full-fledged <strong>MPE (MIDI Polyphonic Expression) Controller</strong>. You can use your Android tablet or phone to play and modulate virtual instruments inside <strong>FL Studio, Ableton Live, Logic Pro, Bitwig, Cubase</strong>, or hardware synths.
+        </p>
+
+        <h4 class="fw-bold mt-3">Connecting Vektrum to FL Studio (PC/Mac)</h4>
+        
+        <div class="card mb-3 bg-body-tertiary border-secondary border-opacity-25">
+          <div class="card-header fw-bold text-info"><i class="bi bi-usb-c me-2"></i>Method A: Direct USB Cable (Recommended / Zero-Latency)</div>
+          <div class="card-body">
+            <ol class="mb-0">
+              <li>Connect your Android device to your computer via USB data cable.</li>
+              <li>Pull down Android notification shade, tap the USB connection notification, and select <strong>"MIDI"</strong> mode.</li>
+              <li>Open <strong>FL Studio</strong>, press <code>F10</code> (MIDI Settings).</li>
+              <li>Under <strong>Input</strong>, select your Android device and click <strong>Enable</strong> (green indicator turns ON).</li>
+              <li>In Vektrum Pro, tap the <strong>MIDI</strong> button on the top bar and toggle <strong>MPE OUT</strong> to ON.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card mb-3 bg-body-tertiary border-secondary border-opacity-25">
+          <div class="card-header fw-bold text-info"><i class="bi bi-bluetooth me-2"></i>Method B: Bluetooth LE MIDI (Wireless)</div>
+          <div class="card-body">
+            <p class="mb-2">In Vektrum Pro, tap <strong>MIDI &rarr; SCAN BLE MIDI</strong> to pair wirelessly with your computer or BLE MIDI hub.</p>
+            <p class="small text-muted mb-0"><em>Tip for Windows:</em> Use a free virtual MIDI bridge utility such as <em>MIDIberry</em> + <em>loopMIDI</em> to forward Windows Bluetooth MIDI directly into FL Studio.</p>
+          </div>
+        </div>
+
+        <div class="doc-callout doc-callout-warning">
+          <strong>Important VST Configuration:</strong> In FL Studio VSTs (such as <em>Vital, Serum, FLEX, Pigments</em>), set the plugin's <strong>Pitch Bend Range (PB)</strong> to <strong>&plusmn;48 Semitones</strong> to match Vektrum's standard MPE range. This ensures your ribbon finger glides match the pitch of the VST 1:1!
+        </div>
+
+        <!-- <div class="image-placeholder-box"> -->
+          <!-- <div class="image-placeholder-tag">&lt;&lt; disini gambar Dialog MIDI Settings & Diagram Koneksi FL Studio: Menampilkan sakelar MPE OUT, pilihan Pitch Bend Range (±48), tombol Scan BLE MIDI, dan tangkapan layar FL Studio MIDI Settings (F10) &gt;&gt;</div> -->
+          <!-- <p class="text-muted small mb-0">Recommended Asset: Split graphic showing Vektrum's MIDI Hub dialog on the left and FL Studio's MIDI Settings (F10) window on the right.</p> -->
+        <!-- </div> -->
+      </section>
+
+      <section id="sec-motion-modulation" class="mt-5">
+        <h3 class="doc-section-heading"><i class="bi bi-phone text-info"></i>10.3 Motion &amp; Gyroscope Tilt Modulation</h3>
+        <p>
+          Using built-in hardware IMU accelerometers, Vektrum Pro allows you to modulate sound parameters by tilting your physical tablet:
+        </p>
+        <ul>
+          <li><strong>Pitch Tilt (Tilt Forward / Backward):</strong> Introduces natural acoustic vibrato and micro-pitch bends.</li>
+          <li><strong>Roll Tilt (Tilt Left / Right):</strong> Dynamically sweeps filter cutoffs and delay feedback rates.</li>
+        </ul>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- CHAPTER 11: TROUBLESHOOTING & FAQ -->
+      <!-- ========================================================================= -->
+      <section id="sec-troubleshooting" class="mt-5">
+        <h2 class="doc-chapter-heading"><i class="bi bi-wrench-adjustable text-info"></i>11. Troubleshooting &amp; Glitch Resolution</h2>
+        
+        <div class="accordion my-3" id="accordionTrouble">
+          
+          <div class="accordion-item bg-body-tertiary border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-body-tertiary text-info fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#trouble1">
+                Audio Crackling, Glitches, or High Latency
+              </button>
+            </h2>
+            <div id="trouble1" class="accordion-collapse collapse" data-bs-parent="#accordionTrouble">
+              <div class="accordion-body">
+                <ul>
+                  <li><strong>Disable Battery Saver / Power Saving Mode:</strong> Android power-saving modes throttle CPU clock speeds, which may interrupt real-time audio threads.</li>
+                  <li><strong>Use Wired Audio:</strong> Bluetooth audio headphones introduce 100ms - 200ms latency due to SBC/AAC codecs. Always use the built-in speaker, 3.5mm jack, or low-latency USB-C audio for live playing.</li>
+                  <li><strong>Close Intensive Background Apps:</strong> Screen recorders and heavy background tasks may cause audio buffer underruns.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-body-tertiary border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-body-tertiary text-info fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#trouble2">
+                No Sound Output
+              </button>
+            </h2>
+            <div id="trouble2" class="accordion-collapse collapse" data-bs-parent="#accordionTrouble">
+              <div class="accordion-body">
+                <ol>
+                  <li>Check Android hardware <strong>Media Volume</strong> buttons.</li>
+                  <li>Verify the <strong>VOLUME</strong> slider in Vektrum's bottom panel is above 0%.</li>
+                  <li>If playing in SoundFont mode, ensure <strong>HYBRID MIX</strong> is greater than 0% and that the selected bank is loaded.</li>
+                  <li>Ensure the <strong>ATTACK</strong> envelope slider is not set to an excessively long value (e.g. > 1.5s).</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-body-tertiary border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-body-tertiary text-info fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#trouble3">
+                FL Studio / PC Does Not Receive MIDI from Vektrum
+              </button>
+            </h2>
+            <div id="trouble3" class="accordion-collapse collapse" data-bs-parent="#accordionTrouble">
+              <div class="accordion-body">
+                <ul>
+                  <li>Ensure Android USB mode is explicitly set to <strong>"MIDI"</strong> (not "Charging Only" or "MTP File Transfer").</li>
+                  <li>In FL Studio, verify that the Android device is highlighted and <strong>Enable</strong> is toggled ON (green light).</li>
+                  <li>Inside Vektrum Pro, open the <strong>MIDI</strong> dialog and verify that <strong>MPE OUT</strong> is turned ON.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-body-tertiary border-secondary border-opacity-25">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed bg-body-tertiary text-info fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#trouble4">
+                Portamento Pitch Slide Feels Different between Synth Wave and SoundFont
+              </button>
+            </h2>
+            <div id="trouble4" class="accordion-collapse collapse" data-bs-parent="#accordionTrouble">
+              <div class="accordion-body">
+                <p>
+                  In Vektrum Pro v1.5.5+, both engines are synchronized to the <strong>Glide Rate</strong> slider. However, some dense multi-sample SoundFonts have baked-in vibrato or fixed release loops. For maximum portamento glide clarity on SoundFonts, select solo instruments (such as leads, violins, or flutes) and set Glide Rate between 35% and 65%.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="image-placeholder-box">
+          <div class="image-placeholder-tag">&lt;&lt; disini gambar Diagram Troubleshooting & Audio Diagnostics: Menampilkan panduan visual kabel USB OTG, pengaturan Android USB MIDI, dan penyesuaian buffer Oboe &gt;&gt;</div>
+          <p class="text-muted small mb-0">Recommended Asset: Graphic or flowchart explaining how to troubleshoot audio latency and USB MIDI setup.</p>
+        </div>
+      </section>
+
+      <section id="sec-faq" class="mt-5 mb-5">
+        <h3 class="doc-section-heading"><i class="bi bi-question-circle text-info"></i>11.2 Frequently Asked Questions (FAQ)</h3>
+        
+        <div class="mb-3">
+          <h6 class="fw-bold text-light">Q: Does Vektrum Pro require an internet connection?</h6>
+          <p class="small text-muted">A: No! Vektrum Pro is 100% offline and standalone. No telemetry, account sign-in, or internet connection is required to synthesize sound, load soundbanks, or record lossless WAV files.</p>
+        </div>
+
+        <div class="mb-3">
+          <h6 class="fw-bold text-light">Q: What is the maximum polyphony supported?</h6>
+          <p class="small text-muted">A: The C++ Analog Engine supports up to 8 polyphonic multi-touch voices (with 3 unison oscillators each = 24 total oscillators). The SF2 SoundFont engine supports up to 32 simultaneous sample voices with intelligent voice stealing.</p>
+        </div>
+
+        <div class="mb-3">
+          <h6 class="fw-bold text-light">Q: Where are user presets and audio recordings saved?</h6>
+          <p class="small text-muted">A: User presets are saved in Vektrum's private app database (and can be exported as <code>.vektrum</code> files). WAV audio recordings are stored directly in your public <code>Music/Vektrum/</code> storage directory for universal access.</p>
+        </div>
+
+        <div class="mb-3">
+          <h6 class="fw-bold text-light">Q: Can I use Vektrum Pro with external hardware synthesizers?</h6>
+          <p class="small text-muted">A: Yes! Connect a standard USB-MIDI interface via a USB-OTG adapter to your Android device. Vektrum Pro will instantly detect the hardware interface and transmit MPE/MIDI out to your analog synths and eurorack modules.</p>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- FOOTER -->
+      <!-- ========================================================================= -->
+      <footer class="mt-5 pt-4 border-top border-secondary border-opacity-25 text-center text-muted small">
+        <p class="mb-1">&copy; 2026 Vektrum Audio Systems. All rights reserved.</p>
+        <p class="mb-0">Designed for expressive acoustic freedom on modern Android touchscreens.</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT: BOOTSTRAP 5 & THEME TOGGLE / SEARCH SCRIPTS -->
+  <!-- ========================================================================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // 1. Light / Dark Mode Toggle Logic
+    const htmlTag = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function applyTheme(theme) {
+      htmlTag.setAttribute('data-bs-theme', theme);
+      localStorage.setItem('vektrum_manual_theme', theme);
+      if (theme === 'dark') {
+        themeIcon.className = 'bi bi-sun-fill';
+        themeLabel.textContent = 'Light Mode';
+        themeToggleBtn.className = 'btn btn-sm btn-outline-info rounded-pill px-3 d-flex align-items-center gap-2';
+      } else {
+        themeIcon.className = 'bi bi-moon-stars-fill';
+        themeLabel.textContent = 'Dark Mode';
+        themeToggleBtn.className = 'btn btn-sm btn-outline-primary rounded-pill px-3 d-flex align-items-center gap-2';
+      }
+    }
+
+    // Load saved theme or default to dark
+    const savedTheme = localStorage.getItem('vektrum_manual_theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = htmlTag.getAttribute('data-bs-theme');
+      const targetTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+      applyTheme(targetTheme);
+    });
+
+    // 2. Clone Sidebar for Mobile Offcanvas
+    const desktopNav = document.getElementById('sidebarNavList');
+    const mobileNavContainer = document.getElementById('mobileSidebarNav');
+    if (desktopNav && mobileNavContainer) {
+      mobileNavContainer.innerHTML = desktopNav.innerHTML;
+      // Close offcanvas upon clicking any link inside mobile navigation
+      mobileNavContainer.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          const offcanvasElement = document.getElementById('sidebarOffcanvas');
+          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+          if (offcanvasInstance) offcanvasInstance.hide();
+        });
+      });
+    }
+
+    // 3. Search Filter Logic for Manual Topics
+    const searchInput = document.getElementById('manualSearchInput');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const links = document.querySelectorAll('.manual-sidebar .nav-link, .manual-sidebar .nav-chapter-title');
+        links.forEach(el => {
+          if (!query) {
+            el.style.display = '';
+            return;
+          }
+          if (el.classList.contains('nav-chapter-title')) {
+            el.style.display = '';
+          } else {
+            const text = el.textContent.toLowerCase();
+            el.style.display = text.includes(query) ? '' : 'none';
+          }
+        });
+      });
+    }
+
+    // 4. Smooth Active State Highlighting for Scrollspy
+    const navLinks = document.querySelectorAll('.manual-sidebar .nav-link');
+    const sections = Array.from(navLinks).map(link => {
+      const href = link.getAttribute('href');
+      return href.startsWith('#') ? document.querySelector(href) : null;
+    }).filter(Boolean);
+
+    window.addEventListener('scroll', () => {
+      let currentSection = null;
+      const scrollPos = window.scrollY + 120;
+      for (const section of sections) {
+        if (section.offsetTop <= scrollPos) {
+          currentSection = section;
+        }
+      }
+      if (currentSection) {
+        const id = '#' + currentSection.id;
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
