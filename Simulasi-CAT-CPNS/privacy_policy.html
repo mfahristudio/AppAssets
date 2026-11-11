@@ -84,7 +84,15 @@
         .alert-box {
             background-color: #FFFBEB;
             border-left: 4px solid #F59E0B;
-            padding: 14px 18px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .source-box {
+            background-color: #EFF6FF;
+            border-left: 4px solid var(--primary);
+            padding: 16px 20px;
             border-radius: 8px;
             margin: 20px 0;
             font-size: 14px;
@@ -118,12 +126,23 @@
     <header>
         <span class="badge">LEGAL DOCUMENT</span>
         <h1>Kebijakan Privasi (Privacy Policy)</h1>
-        <p class="meta">Aplikasi: <strong>Simulasi CAT CPNS</strong> | Pengembang: <strong>M.Fahri Studio</strong><br>Terakhir Diperbarui: 7 November 2026</p>
+        <p class="meta">Aplikasi: <strong>Simulasi CAT CPNS</strong> | Pengembang: <strong>M.Fahri Studio</strong><br>Terakhir Diperbarui: 11 November 2026</p>
     </header>
 
     <div class="alert-box">
-        <strong>Pernyataan Keterbukaan &amp; Penafian Resmi (Disclaimer):</strong><br>
-        Aplikasi <em>Simulasi CAT CPNS</em> yang dikembangkan oleh <strong>M.Fahri Studio</strong> merupakan aplikasi independen yang bertujuan sebagai sarana media edukasi dan latihan mandiri bagi calon peserta seleksi CPNS. Aplikasi ini <strong>BUKAN</strong> merupakan aplikasi resmi instansi pemerintah Republik Indonesia serta <strong>TIDAK BERAFILIASI</strong> secara resmi dengan Badan Kepegawaian Negara (BKN), Kementerian Pendayagunaan Aparatur Negara dan Reformasi Birokrasi (KemenPAN-RB), maupun lembaga pemerintah mana pun.
+        <strong>Pernyataan Penafian Resmi (Government Disclaimer):</strong><br>
+        Aplikasi <em>Simulasi CAT CPNS</em> yang dikembangkan oleh <strong>M.Fahri Studio</strong> merupakan aplikasi independen untuk keperluan edukasi dan latihan mandiri calon peserta ujian. Aplikasi ini <strong>TIDAK MEWAKILI ENTITAS PEMERINTAH</strong> mana pun serta <strong>TIDAK BERAFILIASI</strong> secara resmi dengan Badan Kepegawaian Negara (BKN), Kementerian Pendayagunaan Aparatur Negara dan Reformasi Birokrasi (KemenPAN-RB), maupun instansi pemerintah Republik Indonesia lainnya.
+    </div>
+
+    <div class="source-box">
+        <strong>Sumber Informasi Resmi Pemerintah (Government Information Sources):</strong><br>
+        Seluruh materi kisi-kisi soal Seleksi Kompetensi Dasar (SKD) dan ketentuan ambang batas (Passing Grade) dalam aplikasi ini merujuk pada regulasi publik resmi pemerintah yang dapat diakses melalui portal resmi:
+        <ul style="margin-top: 8px; margin-bottom: 0;">
+            <li>Portal SSCASN BKN: <a href="https://sscasn.bkn.go.id" target="_blank" rel="noopener">https://sscasn.bkn.go.id</a></li>
+            <li>Website Resmi BKN: <a href="https://www.bkn.go.id" target="_blank" rel="noopener">https://www.bkn.go.id</a></li>
+            <li>Website Resmi Kementerian PAN-RB: <a href="https://www.menpan.go.id" target="_blank" rel="noopener">https://www.menpan.go.id</a></li>
+            <li>JDIH Regulasi Kementerian PAN-RB: <a href="https://jdih.menpan.go.id" target="_blank" rel="noopener">https://jdih.menpan.go.id</a></li>
+        </ul>
     </div>
 
     <h2>1. Pendahuluan</h2>
@@ -136,36 +155,36 @@
     <ul>
         <li><strong>Google Play Services</strong>: Digunakan untuk autentikasi sistem dan verifikasi integritas aplikasi.</li>
         <li><strong>Google AdMob</strong>: Digunakan untuk menampilkan iklan pihak ketiga (App Open, Banner, dan Interstitial). AdMob dapat mengumpulkan pengidentifikasi iklan Android (Advertising ID / GAID), alamat IP, data crash aplikasi, dan data diagnostik perangkat guna menayangkan iklan yang relevan sesuai kebijakan privasi Google.</li>
-        <li><strong>Google Play In-App Review</strong>: Digunakan untuk memfasilitasi formulir rating dan ulasan resmi pengguna ke Google Play Store tanpa mengumpulkan informasi pribadi Anda.</li>
+        <li><strong>Google Play In-App Review &amp; Updates</strong>: Digunakan untuk memfasilitasi formulir rating resmi dan pembaruan aplikasi langsung dari Google Play Store.</li>
     </ul>
 
     <h2>3. Izin Akses Perangkat (Device Permissions)</h2>
     <p>Aplikasi ini hanya membutuhkan izin standar yang umum diperlukan oleh sistem Android:</p>
     <ul>
-        <li><strong>Akses Jaringan Penuh (INTERNET)</strong>: Diperlukan untuk memuat iklan Google AdMob dan menghubungkan layanan Google Play Review API.</li>
-        <li><strong>Melihat Sambungan Jaringan (ACCESS_NETWORK_STATE)</strong>: Digunakan oleh AdMob SDK untuk memverifikasi ada/tidaknya koneksi internet sebelum meminta penayangan iklan.</li>
+        <li><strong>Akses Jaringan Penuh (INTERNET)</strong>: Diperlukan untuk memuat iklan Google AdMob dan menghubungkan layanan Google Play APIs.</li>
+        <li><strong>Melihat Sambungan Jaringan (ACCESS_NETWORK_STATE)</strong>: Digunakan untuk memverifikasi ketersediaan koneksi internet sebelum memuat data jaringan.</li>
     </ul>
     <p>Aplikasi ini <strong>TIDAK</strong> meminta izin akses kontak, lokasi GPS, kamera, mikrofon, penyimpanan file pribadi, maupun SMS.</p>
 
     <h2>4. Cookie dan Teknologi Pelacakan Iklan</h2>
-    <p>Aplikasi kami sendiri tidak secara langsung menggunakan cookie. Namun, penyedia jaringan periklanan pihak ketiga seperti Google AdMob dapat memanfaatkan pengidentifikasi iklan perangkat untuk menghitung tayangan iklan, mencegah penipuan klik (*invalid click*), dan menyajikan iklan yang dipersonalisasi sesuai dengan preferensi pengguna.</p>
-    <p>Anda dapat mengatur ulang (*reset*) atau menonaktifkan personalisasi iklan kapan saja melalui pengaturan perangkat Android Anda di: <em>Pengaturan &gt; Google &gt; Iklan &gt; Hapus ID Iklan</em> atau <em>Nonaktifkan Personalisasi Iklan</em>.</p>
+    <p>Aplikasi kami sendiri tidak secara langsung menggunakan cookie. Namun, penyedia jaringan periklanan pihak ketiga seperti Google AdMob dapat memanfaatkan pengidentifikasi iklan perangkat untuk menghitung tayangan iklan, mencegah penipuan klik (*invalid click*), dan menyajikan iklan yang dipersonalisasi.</p>
+    <p>Anda dapat mengatur ulang (*reset*) atau menonaktifkan personalisasi iklan kapan saja melalui pengaturan perangkat Android Anda di: <em>Pengaturan &gt; Google &gt; Iklan &gt; Hapus ID Iklan</em>.</p>
 
     <h2>5. Keamanan Data Pengguna</h2>
-    <p>Kami sangat menghargai kepercayaan Anda dalam menggunakan aplikasi kami. Kami selalu menerapkan standar keamanan teknis yang mutakhir dan menggunakan SDK resmi terverifikasi dari Google. Namun demikian, harap diingat bahwa tidak ada metode transmisi data melalui internet atau penyimpanan elektronik yang 100% aman tanpa risiko sama sekali.</p>
+    <p>Kami menerapkan standar keamanan teknis yang mutakhir dan menggunakan SDK resmi terverifikasi dari Google. Namun demikian, tidak ada metode transmisi data melalui internet atau penyimpanan elektronik yang 100% aman tanpa risiko sama sekali.</p>
 
     <h2>6. Privasi Anak-Anak (Children's Privacy / COPPA)</h2>
-    <p>Aplikasi <em>Simulasi CAT CPNS</em> ditujukan untuk masyarakat umum dan calon pelamar seleksi Calon Pegawai Negeri Sipil (CPNS) yang telah berusia minimal 18 tahun (atau usia kerja menurut hukum yang berlaku). Kami tidak dengan sengaja mengumpulkan informasi identitas pribadi apa pun dari anak-anak di bawah usia 13 tahun.</p>
+    <p>Aplikasi <em>Simulasi CAT CPNS</em> ditujukan untuk masyarakat umum dan calon pelamar seleksi Calon Pegawai Negeri Sipil (CPNS) yang telah berusia minimal 18 tahun (atau usia kerja menurut hukum yang berlaku). Kami tidak mengumpulkan informasi identitas pribadi dari anak-anak di bawah usia 13 tahun.</p>
 
-    <h2>7. Tautan ke Situs / Layanan Eksternal</h2>
-    <p>Aplikasi ini mungkin memuat iklan yang berisi tautan ke situs web atau aplikasi pihak ketiga. Jika Anda mengklik tautan iklan tersebut, Anda akan diarahkan ke situs penyedia pihak ketiga. Kami sangat menyarankan Anda untuk membaca Kebijakan Privasi dari setiap situs web yang Anda kunjungi, karena kami tidak memiliki kendali atas konten, kebijakan privasi, atau praktik dari situs pihak ketiga mana pun.</p>
+    <h2>7. Tautan ke Situs Eksternal &amp; Sumber Pemerintah</h2>
+    <p>Aplikasi ini memuat tautan rujukan ke situs resmi pemerintah (seperti sscasn.bkn.go.id) serta iklan dari pihak ketiga. Kami tidak memiliki kendali atas kebijakan privasi atau praktik operasional dari situs-situs eksternal tersebut.</p>
 
     <h2>8. Perubahan pada Kebijakan Privasi Ini</h2>
-    <p>Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu untuk menyesuaikan dengan regulasi hukum terbaru atau pembaruan fitur aplikasi. Setiap perubahan akan diberitahukan dengan memperbarui tanggal "Terakhir Diperbarui" pada bagian atas halaman ini. Perubahan tersebut berlaku segera setelah dipublikasikan pada halaman ini.</p>
+    <p>Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Setiap perubahan akan diberitahukan dengan memperbarui tanggal "Terakhir Diperbarui" pada bagian atas halaman ini.</p>
 
     <div class="contact-box">
         <h2>9. Hubungi Kami</h2>
-        <p>Jika Anda memiliki pertanyaan, saran, atau masukan mengenai Kebijakan Privasi ini atau tentang operasional aplikasi kami, jangan ragu untuk menghubungi kami melalui:</p>
+        <p>Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini atau tentang aplikasi kami, silakan hubungi kami melalui:</p>
         <ul>
             <li><strong>Pengembang</strong>: M.Fahri Studio</li>
             <li><strong>Email Dukungan</strong>: <a href="mailto:fahri.mohammad@gmail.com">fahri.mohammad@gmail.com</a></li>
